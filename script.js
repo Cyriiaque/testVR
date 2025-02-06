@@ -9,7 +9,7 @@ AFRAME.registerComponent("thumbstick-move", {
 
       if (Math.abs(x) < 0.1 && Math.abs(y) < 0.1) return; // Évite les petits mouvements parasites
 
-      let speed = 0.1; // Vitesse de déplacement augmentée
+      let speed = 0.05; // Vitesse de déplacement augmentée
 
       // Récupère la direction de la caméra
       let direction = new THREE.Vector3();
