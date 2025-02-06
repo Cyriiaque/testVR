@@ -9,29 +9,26 @@ AFRAME.registerComponent("thumbstick-move", {
 
       if (Math.abs(x) < 0.1 && Math.abs(y) < 0.1) return; // Évite les petits mouvements parasites
 
-      let speed = 0.1; // Vitesse de déplacement
+      let speed = 0.1; // Vitesse de déplacement augmentée
+
+      // Récupère la direction de la caméra
       let direction = new THREE.Vector3();
       camera.object3D.getWorldDirection(direction);
       direction.y = 0; // Ignore la hauteur pour éviter le mouvement vertical
       direction.normalize();
 
+      // Calcul du mouvement
       let strafe = new THREE.Vector3()
         .crossVectors(new THREE.Vector3(0, 1, 0), direction)
         .multiplyScalar(x);
-      let move = direction.multiplyScalar(y);
+      let move = direction.multiplyScalar(y); // On garde y sans inverser cette fois
 
       let finalMove = new THREE.Vector3()
         .addVectors(strafe, move)
         .multiplyScalar(speed);
 
-      let newPosition = rig.object3D.position.clone().add(finalMove);
-
-      // Vérifier les collisions
-      rig.setAttribute("position", {
-        x: newPosition.x,
-        y: rig.object3D.position.y, // Garder la hauteur constante
-        z: newPosition.z,
-      });
+      // Appliquer le mouvement
+      rig.object3D.position.add(finalMove);
     });
   },
 });
