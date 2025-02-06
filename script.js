@@ -20,8 +20,8 @@ AFRAME.registerComponent("thumbstick-move", {
       // Calcul du mouvement
       let strafe = new THREE.Vector3()
         .crossVectors(direction, new THREE.Vector3(0, 1, 0))
-        .multiplyScalar(x);
-      let move = direction.multiplyScalar(-y); // -y car le joystick est inversé
+        .multiplyScalar(-x); // Inverser la direction gauche/droite
+      let move = direction.multiplyScalar(y); // Inverser la direction avant/arrière
 
       let finalMove = new THREE.Vector3()
         .addVectors(strafe, move)
