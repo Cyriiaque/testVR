@@ -29,8 +29,9 @@
 
         <div id="container"></div>
 
-        <a-entity id="rig" movement-controls="speed:01">
-            <a-camera wasd-controls look-controls="pointerLockEnabled: true;" position="0 2.3 4">
+        <a-entity>
+            <a-camera wasd-controls look-controls="pointerLockEnabled: true;" position="0 3 4" id="cameraRig"
+                movement-controls="speed:01">
                 <a-entity cursor position="0 0 -0.01" geometry="primitive: sphere; radius: 0.00005"
                     material="color: #202020; shader: flat">
                 </a-entity>
@@ -316,7 +317,7 @@
             <a-sphere static-body position="0.64 0.26 -2.9" radius="0.08" color="#8B5A2B"></a-sphere>
         </a-entity>
 
-        <a-entity id="glbtest" gltf-model="#deskchair" position="0 1 -2" scale="2 2 2"
+        <a-entity id="deskchairobject" gltf-model="#deskchair" position="-1 0.5 -2" scale="2 2 2"
             shadow="cast: true; receive: true" static-body>
         </a-entity>
 
