@@ -1,13 +1,34 @@
 AFRAME.registerComponent("thumbstick-move", {
   init: function () {
     let rig = document.getElementById("rig");
+    let camera = document.getElementById("camera");
+
     this.el.addEventListener("thumbstickmoved", function (evt) {
       let x = evt.detail.x; // Gauche/Droite
       let y = evt.detail.y; // Avant/Arrière
 
-      let speed = 0.1; // Vitesse de déplacement
-      rig.object3D.position.x += x * speed;
-      rig.object3D.position.z += y * speed;
+      if (Math.abs(x) < 0.1 && Math.abs(y) < 0.1) return; // Évite les petits mouvements parasites
+
+      let speed = 0.05; // Vitesse de déplacement
+
+      // Récupère la direction de la caméra
+      let direction = new THREE.Vector3();
+      camera.object3D.getWorldDirection(direction);
+      direction.y = 0; // Ignore la hauteur pour éviter le mouvement vertical
+      direction.normalize();
+
+      // Calcul du mouvement
+      let strafe = new THREE.Vector3()
+        .crossVectors(direction, new THREE.Vector3(0, 1, 0))
+        .multiplyScalar(x);
+      let move = direction.multiplyScalar(-y); // -y car le joystick est inversé
+
+      let finalMove = new THREE.Vector3()
+        .addVectors(strafe, move)
+        .multiplyScalar(speed);
+
+      // Appliquer le mouvement
+      rig.object3D.position.add(finalMove);
     });
   },
 });
