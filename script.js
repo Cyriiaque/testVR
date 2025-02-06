@@ -2,7 +2,6 @@ AFRAME.registerComponent("thumbstick-move", {
   init: function () {
     let rig = document.getElementById("rig");
     let camera = document.getElementById("camera");
-    let physicsBody = rig.body; // Accès au corps physique du rig
 
     this.el.addEventListener("thumbstickmoved", function (evt) {
       let x = evt.detail.x; // Gauche/Droite
@@ -10,31 +9,26 @@ AFRAME.registerComponent("thumbstick-move", {
 
       if (Math.abs(x) < 0.1 && Math.abs(y) < 0.1) return; // Évite les petits mouvements parasites
 
-      let speed = 0.2; // Vitesse de déplacement
+      let speed = 0.1; // Vitesse de déplacement
 
       // Récupère la direction de la caméra
       let direction = new THREE.Vector3();
       camera.object3D.getWorldDirection(direction);
-      direction.y = 0; // Ignore la hauteur
+      direction.y = 0; // Ignore la hauteur pour éviter le mouvement vertical
       direction.normalize();
 
       // Calcul du mouvement
       let strafe = new THREE.Vector3()
         .crossVectors(new THREE.Vector3(0, 1, 0), direction)
         .multiplyScalar(x);
-      let move = direction.multiplyScalar(y);
+      let move = direction.multiplyScalar(y); // On garde y sans inverser cette fois
 
       let finalMove = new THREE.Vector3()
         .addVectors(strafe, move)
         .multiplyScalar(speed);
 
-      // Appliquer le mouvement avec les forces physiques
-      if (physicsBody) {
-        physicsBody.applyImpulse(
-          new CANNON.Vec3(finalMove.x, 0, finalMove.z),
-          new CANNON.Vec3(0, 0, 0)
-        );
-      }
+      // Appliquer le mouvement
+      rig.object3D.position.add(finalMove);
     });
   },
 });
