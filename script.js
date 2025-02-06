@@ -1,11 +1,9 @@
-AFRAME.registerComponent("custom-joystick-move", {
+AFRAME.registerComponent("thumbstick-move", {
   init: function () {
     let rig = document.getElementById("rig");
-    let leftHand = document.getElementById("leftHand");
-
-    leftHand.addEventListener("axismove", function (evt) {
-      let x = evt.detail.axis[0]; // Gauche/Droite
-      let y = evt.detail.axis[1]; // Avant/Arrière
+    this.el.addEventListener("thumbstickmoved", function (evt) {
+      let x = evt.detail.x; // Gauche/Droite
+      let y = evt.detail.y; // Avant/Arrière
 
       let speed = 0.1; // Vitesse de déplacement
       rig.object3D.position.x -= x * speed;
@@ -13,8 +11,6 @@ AFRAME.registerComponent("custom-joystick-move", {
     });
   },
 });
-
-document.getElementById("rig").setAttribute("custom-joystick-move", "");
 
 function moveToPosition(object, targetPosition) {
   var currentPosition = object.getAttribute("position");
