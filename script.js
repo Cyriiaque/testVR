@@ -1,3 +1,18 @@
+AFRAME.registerComponent("switch-camera", {
+  init: function () {
+    var sceneEl = this.el;
+    var cameraRig = document.getElementById("cameraRig");
+
+    sceneEl.addEventListener("enter-vr", function () {
+      cameraRig.setAttribute("position", "0 6 0"); // Position pour VR
+    });
+
+    sceneEl.addEventListener("exit-vr", function () {
+      cameraRig.setAttribute("position", "0 3 0"); // Position pour PC
+    });
+  },
+});
+
 function moveToPosition(object, targetPosition) {
   var currentPosition = object.getAttribute("position");
   var step = 0.01;
