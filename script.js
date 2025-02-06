@@ -6,8 +6,8 @@ AFRAME.registerComponent("thumbstick-move", {
       let y = evt.detail.y; // Avant/Arrière
 
       let speed = 0.1; // Vitesse de déplacement
-      rig.object3D.position.x -= x * speed;
-      rig.object3D.position.z -= y * speed;
+      rig.object3D.position.x += x * speed;
+      rig.object3D.position.z += y * speed;
     });
   },
 });
@@ -78,32 +78,3 @@ document.querySelector("#drawer3").addEventListener("click", function () {
     moveToPosition(drawer3, { x: -2.6, y: 1, z: -5 });
   }
 });
-
-// document
-//   .querySelector("#rightController")
-//   .addEventListener("triggerdown", function () {
-//     var drawer1 = document.querySelector("#drawer1");
-//     moveToPosition(drawer1, { x: -2.6, y: 0, z: -5 });
-//   });
-
-// function checkCollision() {
-//   var camera = document.querySelector("[camera]");
-//   var cameraPosition = camera.getAttribute("position");
-//   var cylinderPosition = cylinder.getAttribute("position");
-
-//   var dx = cameraPosition.x - cylinderPosition.x;
-//   var dy = cameraPosition.y - cylinderPosition.y;
-//   var dz = cameraPosition.z - cylinderPosition.z;
-
-//   var distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-//   if (distance < 1.5) {
-//     cylinder.setAttribute(
-//       "color",
-//       "#" + Math.floor(Math.random() * 16777215).toString(16)
-//     );
-//   }
-// }
-
-// setInterval(checkCollision, 100);
-// render();
