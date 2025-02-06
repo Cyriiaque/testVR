@@ -1,3 +1,21 @@
+AFRAME.registerComponent("custom-joystick-move", {
+  init: function () {
+    let rig = document.getElementById("rig");
+    let leftHand = document.getElementById("leftHand");
+
+    leftHand.addEventListener("axismove", function (evt) {
+      let x = evt.detail.axis[0]; // Gauche/Droite
+      let y = evt.detail.axis[1]; // Avant/Arrière
+
+      let speed = 0.1; // Vitesse de déplacement
+      rig.object3D.position.x -= x * speed;
+      rig.object3D.position.z -= y * speed;
+    });
+  },
+});
+
+document.getElementById("rig").setAttribute("custom-joystick-move", "");
+
 function moveToPosition(object, targetPosition) {
   var currentPosition = object.getAttribute("position");
   var step = 0.01;
