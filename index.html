@@ -36,7 +36,7 @@
                     material="color: #202020; shader: flat">
                 </a-entity>
             </a-camera>
-            <a-entity id="leftController" oculus-touch-controls="hand: left" thumbstick-controls></a-entity>
+            <a-entity id="leftController" oculus-touch-controls="hand: left ; button: thumbstick;"></a-entity>
             <a-entity id="rightController" oculus-touch-controls="hand: right">
                 <a-entity raycaster="objects: .collidable" cursor></a-entity>
             </a-entity>
@@ -199,21 +199,6 @@
         <a-box position="-6.4 4.34 0" scale="19 0.2 0.2" rotation="0 90 0" color="#885f32" material="roughness: 1"
             static-body></a-box>
 
-        <!-- OBJECTS -->
-        <!-- Tree -->
-        <a-entity obj-model="obj: #tree-o; mtl: #tree-m" position="-20 2 0" scale="5 5 5" rotation="0 180 0"></a-entity>
-        <!-- Door -->
-        <a-entity obj-model="obj: #door-o; mtl: #door-m" position="6.35 0 -7" scale="3.5 3.5 3.5"
-            rotation="0 90 0"></a-entity>
-        <!-- Fence -->
-        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-15 0 -20" scale="1.5 1.5 1.5"
-            rotation="0 0 0"></a-entity>
-        <!-- Desk Chair -->
-        <a-entity obj-model="obj: #deskchair-o; mtl: #deskchair-m" position="-3.5 0 -7" scale="4 4 4"
-            rotation="0 230 0"></a-entity>
-        <!-- <a-entity obj-model="obj: #desk-o; mtl: #desk-m" position="-1 0 -7.2" scale="4.5 4.5 4.5"
-                rotation="0 0 0"></a-entity> -->
-
 
         <!-- Tables -->
 
@@ -317,9 +302,21 @@
             <a-sphere static-body position="0.64 0.26 -2.9" radius="0.08" color="#8B5A2B"></a-sphere>
         </a-entity>
 
-        <a-entity id="deskchairobject" gltf-model="#deskchair" position="-1 0.5 -2" scale="2 2 2"
+
+        <!-- OBJECTS -->
+        <!-- Tree -->
+        <a-entity id="deskchairobject" gltf-model="#deskchair" position="-3.5 0 -7" scale="4 4 4" rotation="0 230 0"
             shadow="cast: true; receive: true" static-body>
         </a-entity>
+        <a-entity obj-model="obj: #tree-o; mtl: #tree-m" position="-20 2 0" scale="5 5 5" rotation="0 180 0"></a-entity>
+        <!-- Door -->
+        <a-entity obj-model="obj: #door-o; mtl: #door-m" position="6.35 0 -7" scale="3.5 3.5 3.5"
+            rotation="0 90 0"></a-entity>
+        <!-- Fence -->
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-15 0 -20" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
+
+
 
 
 
