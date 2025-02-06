@@ -110,13 +110,13 @@
 
         <!-- WALLS -->
         <!-- Front Wall -->
-        <a-box position="0 2.5 -10" shadow="cast: true; receive: true" scale="14 5 1" rotation="0 0 0" color="#d4bc96"
+        <a-box position="0 2.5 -10" class="collidable" shadow="cast: true; receive: true" scale="14 5 1" rotation="0 0 0" color="#d4bc96"
             material="roughness: 1" static-body></a-box>
         <!-- Back Wall -->
-        <a-box position="0 2.5 10" shadow="cast: true; receive: true" scale="14 5 1" rotation="0 0 0" color="#d4bc96"
+        <a-box position="0 2.5 10" class="collidable" shadow="cast: true; receive: true" scale="14 5 1" rotation="0 0 0" color="#d4bc96"
             material="roughness: 1" static-body></a-box>
         <!-- Right Wall -->
-        <a-box position="7 2.5 0" shadow="cast: true; receive: true" scale="20 5 1" rotation="0 90 0" color="#d4bc96"
+        <a-box position="7 2.5 0" class="collidable" shadow="cast: true; receive: true" scale="20 5 1" rotation="0 90 0" color="#d4bc96"
             material="roughness: 1" static-body></a-box>
         <!-- Left Wall -->
         <!-- right -->
@@ -309,12 +309,12 @@
 
 
 
-        <a-box shadow=" cast: true; receive: true" position="0 4 -2" color="tomato" dynamic-body="linearDamping: 0.05"
+        <a-box shadow=" cast: true; receive: true" position="0 4 -2" color="tomato" dynamic-body="linearDamping: 0.05; mass:"
             class="collidable"></a-box>
         <a-box shadow="cast: true; receive: true" position="0.2 3 -2.3" class="collidable" color="tomato"
-            dynamic-body="linearDamping: 0.5"></a-box>
+            dynamic-body="linearDamping: 0.5; mass: 1"></a-box>
         <a-sphere shadow="cast: true; receive: true" position="-3 3 -1" color="mediumseagreen" radius="0.5"
-            dynamic-body="linearDamping: 0.5; angularDamping: 0.3"></a-sphere>
+            dynamic-body="linearDamping: 0.5; angularDamping: 0.3; mass: 1"></a-sphere>
 
 
 
