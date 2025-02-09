@@ -10,7 +10,7 @@ AFRAME.registerComponent("thumbstick-move", {
 
       if (Math.abs(x) < 0.1 && Math.abs(y) < 0.1) return;
 
-      let speed = 0.08;
+      let speed = 0.06;
 
       let direction = new THREE.Vector3();
       camera.object3D.getWorldDirection(direction);
