@@ -10,7 +10,7 @@ AFRAME.registerComponent("thumbstick-move", {
 
       if (Math.abs(x) < 0.1 && Math.abs(y) < 0.1) return;
 
-      let speed = 0.1;
+      let speed = 0.12;
 
       let direction = new THREE.Vector3();
       camera.object3D.getWorldDirection(direction);
@@ -59,41 +59,54 @@ function moveToPosition(object, targetPosition) {
   animate();
 }
 
-document.querySelector("#drawer1").addEventListener("click", function () {
-  var drawer1 = document.querySelector("#drawer1");
-  if (
-    drawer1.getAttribute("position").x == -2.6 &&
-    drawer1.getAttribute("position").y == 0 &&
-    drawer1.getAttribute("position").z == -5
-  ) {
-    moveToPosition(drawer1, { x: -2.6, y: 0, z: -4.35 });
-  } else {
-    moveToPosition(drawer1, { x: -2.6, y: 0, z: -5 });
-  }
-});
+// document.querySelector("#drawer1").addEventListener("click", function () {
+//   var drawer1 = document.querySelector("#drawer1");
+//   if (
+//     drawer1.getAttribute("position").x == -2.6 &&
+//     drawer1.getAttribute("position").y == 0 &&
+//     drawer1.getAttribute("position").z == -5
+//   ) {
+//     moveToPosition(drawer1, { x: -2.6, y: 0, z: -4.35 });
+//   } else {
+//     moveToPosition(drawer1, { x: -2.6, y: 0, z: -5 });
+//   }
+// });
 
-document.querySelector("#drawer2").addEventListener("click", function () {
-  var drawer2 = document.querySelector("#drawer2");
-  if (
-    drawer2.getAttribute("position").x == -2.6 &&
-    drawer2.getAttribute("position").y == 0.5 &&
-    drawer2.getAttribute("position").z == -5
-  ) {
-    moveToPosition(drawer2, { x: -2.6, y: 0.5, z: -4.35 });
-  } else {
-    moveToPosition(drawer2, { x: -2.6, y: 0.5, z: -5 });
-  }
-});
+// document
+//   .querySelector("#rightController")
+//   .addEventListener("triggerdown", function () {
+//     var drawer1 = document.querySelector("#drawer1");
+//     if (
+//       drawer1.getAttribute("position").x == -2.6 &&
+//       drawer1.getAttribute("position").y == 0 &&
+//       drawer1.getAttribute("position").z == -5
+//     ) {
+//       moveToPosition(drawer1, { x: -2.6, y: 0, z: -4.35 });
+//     } else {
+//       moveToPosition(drawer1, { x: -2.6, y: 0, z: -5 });
+//     }
+//   });
 
-document.querySelector("#drawer3").addEventListener("click", function () {
-  var drawer3 = document.querySelector("#drawer3");
-  if (
-    drawer3.getAttribute("position").x == -2.6 &&
-    drawer3.getAttribute("position").y == 1 &&
-    drawer3.getAttribute("position").z == -5
-  ) {
-    moveToPosition(drawer3, { x: -2.6, y: 1, z: -4.35 });
-  } else {
-    moveToPosition(drawer3, { x: -2.6, y: 1, z: -5 });
-  }
+["#drawer1", "#drawer2", "#drawer3"].forEach(function (drawerId) {
+  document.querySelector(drawerId).addEventListener("click", function () {
+    var drawer = document.querySelector(drawerId);
+    var targetPosition = drawer.getAttribute("position").z == -5 ? -4.35 : -5;
+    moveToPosition(drawer, {
+      x: -2.6,
+      y: drawer.getAttribute("position").y,
+      z: targetPosition,
+    });
+  });
+
+  document
+    .querySelector("#rightController")
+    .addEventListener("triggerdown", function () {
+      var drawer = document.querySelector(drawerId);
+      var targetPosition = drawer.getAttribute("position").z == -5 ? -4.35 : -5;
+      moveToPosition(drawer, {
+        x: -2.6,
+        y: drawer.getAttribute("position").y,
+        z: targetPosition,
+      });
+    });
 });
