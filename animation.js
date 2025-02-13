@@ -240,16 +240,15 @@ let renderCharacter = function () {
         ascene.appendChild(atext);
         ascene.appendChild(characterEntity);
         characterEntity.addEventListener("click", function () {
-          if (character.price > moneyvalue){
+          if (Number(character.price) > Number(moneyvalue)) {
             renderBoard();
-          }
-          else{
+          } else {
             let characters = document.getElementById("characters");
             characters.setAttribute("gltf-model", character.url);
-            moneyvalue = moneyvalue - character.price;
+            moneyvalue = moneyvalue - Number(character.price);
             money.setAttribute("value", moneyvalue);
             character.price = 0;
-            atext.setAttribute("value","");
+            atext.setAttribute("value", "");
           }
   
         });
