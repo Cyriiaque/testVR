@@ -119,13 +119,12 @@ AFRAME.registerComponent("click-grab", {
     });
 
     let rightController = document.querySelector("#rightController");
-    let rig = document.querySelector("#rig");
     if (rightController) {
       rightController.addEventListener("triggerdown", function () {
         isGrabbed = true;
         updatePosition;
         el.setAttribute("dynamic-body", "mass: 0");
-        rig.addEventListener("componentchanged", (event) => {
+        camera.addEventListener("componentchanged", (event) => {
           if (event.detail.name === "rotation") {
             updatePosition();
           }
