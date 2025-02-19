@@ -153,7 +153,13 @@ AFRAME.registerComponent("VR-grab", {
       clickSound.components.sound.playSound();
       launcher.setAttribute("static-body", "");
       el.setAttribute("dynamic-body", "mass: 0");
-      window.addEventListener("mousemove", updatePosition);
+      function loop() {
+        if (isGrabbed) {
+          updatePosition();
+          requestAnimationFrame(loop);
+        }
+      }
+      loop();
     });
 
     scene.addEventListener("triggerup", function (event) {
