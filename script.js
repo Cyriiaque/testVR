@@ -126,14 +126,14 @@ AFRAME.registerComponent("VR-grab", {
     let isGrabbed = false;
     let controller = null;
 
-    this.onGrabStart = function (event) {
-      let raycaster = event.target.components.raycaster;
-      if (!raycaster) return;
-      let intersectedEls = raycaster.intersectedEls;
-      if (intersectedEls.length === 0 || intersectedEls[0] !== el) return;
+    this.onGrabStart = function (evt) {
+      // let raycaster = evt.target.components.raycaster;
+      // if (!raycaster) return;
+      // let intersectedEls = raycaster.intersectedEls;
+      // if (intersectedEls.length === 0 || intersectedEls[0] !== el) return;
 
       isGrabbed = true;
-      controller = event.target;
+      controller = evt.target;
       el.setAttribute("dynamic-body", "mass: 0");
       controller.addEventListener("triggerup", this.onGrabEnd);
     };
