@@ -134,13 +134,13 @@ AFRAME.registerComponent("VR-grab", {
 
       isGrabbed = true;
       controller = evt.target;
-      el.setAttribute("dynamic-body", "mass: 0");
+      el.setAttribute("static-body", "mass: 0");
       controller.addEventListener("triggerup", this.onGrabEnd);
     };
 
     this.onGrabEnd = function () {
       if (isGrabbed) {
-        el.setAttribute("dynamic-body", "mass: 1");
+        el.setAttribute("static-body", "mass: 1");
         isGrabbed = false;
         controller.removeEventListener("triggerup", this.onGrabEnd);
         controller = null;
