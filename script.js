@@ -123,62 +123,47 @@ AFRAME.registerComponent("click-grab", {
 AFRAME.registerComponent("VR-grab", {
   init: function () {
     let el = this.el;
-    let scene = el.sceneEl;
     let isGrabbed = false;
+    let controller = null;
 
-    function updatePosition(event) {
+    this.onGrabStart = function (event) {
+      let raycaster = event.target.components.raycaster;
+      if (!raycaster) return;
+      let intersectedEls = raycaster.intersectedEls;
+      if (intersectedEls.lenght === 0 || intersectedEls[0] !== el) return;
+
+      isGrabbed = true;
+      controller = event.target;
+      el.setAttribute("dynamic-body", "mass: 0");
+      controller.addEventListener("triggerup", this.onGrabEnd);
+    };
+
+    this.onGrabEnd = function () {
       if (isGrabbed) {
-        let controller = event.target;
+        el.setAttribute("dynamic-body", "mass: 1");
+        isGrabbed = false;
+        controller.removeEventListener("triggerup", this.onGrabEnd);
+        controller = null;
+      }
+    };
+
+    this.tick = function () {
+      if (isGrabbed && controller) {
         let controllerPos = new THREE.Vector3();
         let controllerQuat = new THREE.Quaternion();
 
         controller.object3D.getWorldPosition(controllerPos);
         controller.object3D.getWorldQuaternion(controllerQuat);
 
-        let offset = new THREE.Vector3(0, 0, -1.5);
-        offset.applyQuaternion(cameraQuat);
+        let offset = new THREE.Vector3(0, 0, -0.1);
+        offset.applyQuaternion(controllerQuat);
 
         let newPosition = controllerPos.clone().add(offset);
         el.object3D.position.copy(newPosition);
       }
-    }
+    };
 
-    let launcher = document.querySelector("#launcher");
-    const clickSound = document.querySelector("#clickSound");
-    const releaseSound = document.querySelector("#releaseSound");
-
-    el.addEventListener("triggerdown", function () {
-      isGrabbed = true;
-      updatePosition;
-      clickSound.components.sound.playSound();
-      launcher.setAttribute("static-body", "");
-      el.setAttribute("dynamic-body", "mass: 0");
-      function loop() {
-        if (isGrabbed) {
-          updatePosition();
-          requestAnimationFrame(loop);
-        }
-      }
-      loop();
-    });
-
-    scene.addEventListener("triggerup", function (event) {
-      if (isGrabbed) {
-        // if ((event.button == 0) & isGrabbed) {
-        clickSound.components.sound.playSound();
-        isGrabbed = false;
-        launcher.removeAttribute("static-body");
-        el.setAttribute("dynamic-body", "mass: 1");
-      }
-      // if (isGrabbed) {
-      //   releaseSound.components.sound.playSound();
-      //   isGrabbed = false;
-      //   el.setAttribute("dynamic-body", "mass: 1");
-      //   setTimeout(() => {
-      //     launcher.removeAttribute("static-body");
-      //   }, 100);
-      // }
-    });
+    el.sceneEl.addEventListener("triggerdown", this.onGrabStart);
   },
 });
 
