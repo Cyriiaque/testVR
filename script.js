@@ -120,37 +120,34 @@ AFRAME.registerComponent("click-grab", {
   },
 });
 
-AFRAME.registerComponent("vr-grab", {
+AFRAME.registerComponent("VR-grab", {
   init: function () {
     let el = this.el;
     let isGrabbed = false;
     let controller = null;
 
-    this.onGrabStart = (event) => {
+    this.onGrabStart = function (event) {
       let raycaster = event.target.components.raycaster;
       if (!raycaster) return;
       let intersectedEls = raycaster.intersectedEls;
-      if (intersectedEls.length === 0 || intersectedEls[0] !== el) return; // Correction de "lenght"
+      if (intersectedEls.length === 0 || intersectedEls[0] !== el) return;
 
       isGrabbed = true;
       controller = event.target;
       el.setAttribute("dynamic-body", "mass: 0");
-
       controller.addEventListener("triggerup", this.onGrabEnd);
     };
 
-    this.onGrabEnd = () => {
+    this.onGrabEnd = function () {
       if (isGrabbed) {
         el.setAttribute("dynamic-body", "mass: 1");
         isGrabbed = false;
-        if (controller) {
-          controller.removeEventListener("triggerup", this.onGrabEnd);
-          controller = null;
-        }
+        controller.removeEventListener("triggerup", this.onGrabEnd);
+        controller = null;
       }
     };
 
-    this.tick = () => {
+    this.tick = function () {
       if (isGrabbed && controller) {
         let controllerPos = new THREE.Vector3();
         let controllerQuat = new THREE.Quaternion();
@@ -161,29 +158,13 @@ AFRAME.registerComponent("vr-grab", {
         let offset = new THREE.Vector3(0, 0, -0.1);
         offset.applyQuaternion(controllerQuat);
 
-        el.object3D.position.copy(controllerPos.add(offset));
+        let newPosition = controllerPos.clone().add(offset);
+        el.object3D.position.copy(newPosition);
       }
     };
 
-    // Attacher les événements correctement lors de l'entrée en mode VR
-    this.attachControllers = () => {
-      let controllers = document.querySelectorAll("a-entity[hand-controls]");
-      controllers.forEach((ctrl) => {
-        ctrl.addEventListener("triggerdown", this.onGrabStart);
-      });
-    };
-
-    this.detachControllers = () => {
-      let controllers = document.querySelectorAll("a-entity[hand-controls]");
-      controllers.forEach((ctrl) => {
-        ctrl.removeEventListener("triggerdown", this.onGrabStart);
-      });
-    };
-
-    // Gérer l'entrée et la sortie du mode VR pour attacher/détacher les événements
-    el.sceneEl.addEventListener("enter-vr", this.attachControllers);
-    el.sceneEl.addEventListener("exit-vr", this.detachControllers);
-  }
+    el.sceneEl.addEventListener("triggerdown", this.onGrabStart);
+  },
 });
 
 // DRAWER
