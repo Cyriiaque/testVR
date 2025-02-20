@@ -155,7 +155,7 @@ AFRAME.registerComponent("VR-grab", {
         controller.object3D.getWorldPosition(controllerPos);
         controller.object3D.getWorldQuaternion(controllerQuat);
 
-        let offset = new THREE.Vector3(0, 0, -1.5);
+        let offset = new THREE.Vector3(0, 0, -2.5);
         offset.applyQuaternion(controllerQuat);
 
         let newPosition = controllerPos.clone().add(offset);
