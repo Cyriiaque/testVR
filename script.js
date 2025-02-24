@@ -125,21 +125,12 @@ AFRAME.registerComponent("VR-grab", {
     let el = this.el;
     let scene = el.sceneEl;
     let isGrabbed = false;
+    let controller = null;
 
     function updatePosition() {
-      if (isGrabbed) {
-        let controller = document.querySelector("#rightController");
-        let controllerPos = new THREE.Vector3();
-        let controllerQuat = new THREE.Quaternion();
-
-        controller.object3D.getWorldPosition(controllerPos);
-        controller.object3D.getWorldQuaternion(controllerQuat);
-
+      if (isGrabbed && controller) {
         let offset = new THREE.Vector3(0, 0, -1.5);
-        offset.applyQuaternion(controllerQuat);
-
-        let newPosition = controllerPos.clone().add(offset);
-        el.object3D.position.copy(newPosition);
+        el.object3D.position.copy(offset);
       }
     }
 
@@ -147,11 +138,13 @@ AFRAME.registerComponent("VR-grab", {
     const clickSound = document.querySelector("#clickSound");
     const releaseSound = document.querySelector("#releaseSound");
 
-    el.addEventListener("triggerdown", function () {
+    el.addEventListener("triggerdown", function (evt) {
       isGrabbed = true;
+      controller = evt.target;
       clickSound.components.sound.playSound();
       launcher.setAttribute("static-body", "");
       el.setAttribute("dynamic-body", "mass: 0");
+      controller.object3D.add(el.object3D); // Attach the object to the controller
       function loop() {
         if (isGrabbed) {
           updatePosition();
@@ -161,12 +154,14 @@ AFRAME.registerComponent("VR-grab", {
       loop();
     });
 
-    scene.addEventListener("triggerup", function (event) {
+    scene.addEventListener("triggerup", function () {
       if (isGrabbed) {
         clickSound.components.sound.playSound();
         isGrabbed = false;
         launcher.removeAttribute("static-body");
         el.setAttribute("dynamic-body", "mass: 1");
+        controller.object3D.remove(el.object3D); // Detach the object from the controller
+        controller = null;
       }
     });
   },
