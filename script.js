@@ -128,8 +128,8 @@ AFRAME.registerComponent("VR-grab", {
 
     function updatePosition() {
       let controller = document.querySelector("#rightController");
-      controller.appendChild(el);
       controller.setAttribute("position", "0 0 -1");
+      controller.appendChild(el);
     }
 
     let launcher = document.querySelector("#launcher");
