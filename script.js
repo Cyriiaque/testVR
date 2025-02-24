@@ -206,7 +206,7 @@ AFRAME.registerComponent("VR-grab", {
 
     scene.addEventListener("triggerdown", function (event) {
       if (isGrabbed) {
-        releaseSound.components.sound.playSound();
+        // releaseSound.components.sound.playSound();
         isGrabbed = false;
         launcher.removeAttribute("static-body");
         el.setAttribute("dynamic-body", "mass: 1");
