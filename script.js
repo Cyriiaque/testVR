@@ -1,4 +1,3 @@
-
 // PC to VR
 
 AFRAME.registerComponent("adjust-camera-height", {
@@ -180,13 +179,13 @@ AFRAME.registerComponent("VR-grab", {
     let scene = el.sceneEl;
     let isGrabbed = false;
 
-    function updatePosition() {
-      let controller = document.querySelector("#rightController");
-      console.log(el.object3D.position);
-      el.removeAttribute("position");
-      el.setAttribute("position", "0 0 -1");
-      controller.appendChild(el);
-    }
+    // function updatePosition() {
+    //   let controller = document.querySelector("#rightController");
+    //   console.log(el.object3D.position);
+    //   el.removeAttribute("position");
+    //   el.setAttribute("position", "0 0 -1");
+    //   controller.appendChild(el);
+    // }
 
     let launcher = document.querySelector("#launcher");
     const clickSound = document.querySelector("#clickSound");
