@@ -138,7 +138,7 @@ AFRAME.registerComponent("VR-grab", {
     const clickSound = document.querySelector("#clickSound");
     const releaseSound = document.querySelector("#releaseSound");
 
-    el.addEventListener("triggerdown", function () {
+    el.addEventListener("triggerup", function () {
       isGrabbed = true;
       releaseSound.components.sound.playSound();
       launcher.setAttribute("static-body", "");
@@ -151,7 +151,7 @@ AFRAME.registerComponent("VR-grab", {
       controller.appendChild(el);
     });
 
-    scene.addEventListener("triggerup", function (event) {
+    scene.addEventListener("triggerdown", function (event) {
       if (isGrabbed) {
         clickSound.components.sound.playSound();
         isGrabbed = false;
@@ -161,7 +161,6 @@ AFRAME.registerComponent("VR-grab", {
     });
   },
 });
-
 // DRAWER
 
 document.querySelector("#drawer1").addEventListener("click", function () {
