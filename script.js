@@ -116,12 +116,58 @@ AFRAME.registerComponent("thumbstick-move", {
 //   },
 // });
 
+AFRAME.registerComponent("VR-grab", {
+  init: function () {
+    let el = this.el;
+    let scene = el.sceneEl;
+    let isGrabbed = false;
+
+    // function updatePosition() {
+    //   let controller = document.querySelector("#rightController");
+    //   console.log(el.object3D.position);
+    //   el.removeAttribute("position");
+    //   el.setAttribute("position", "0 0 -1");
+    //   controller.appendChild(el);
+    // }
+
+    let launcher = document.querySelector("#launcher");
+    const clickSound = document.querySelector("#clickSound");
+    const releaseSound = document.querySelector("#releaseSound");
+
+    el.addEventListener("triggerup", function () {
+      isGrabbed = true;
+      releaseSound.components.sound.playSound();
+      launcher.setAttribute("static-body", "");
+      el.setAttribute("dynamic-body", "mass: 0");
+      // updatePosition();
+      let controller = document.querySelector("#rightController");
+      console.log(el.object3D.position);
+      el.removeAttribute("position");
+      el.setAttribute("position", "0 0 -1");
+      controller.appendChild(el);
+    });
+
+    scene.addEventListener("triggerdown", function (event) {
+      if (isGrabbed) {
+        releaseSound.components.sound.playSound();
+        isGrabbed = false;
+        launcher.removeAttribute("static-body");
+        el.setAttribute("dynamic-body", "mass: 1");
+      }
+    });
+  },
+});
+
 AFRAME.registerComponent("click-grab", {
   init: function () {
     let el = this.el;
     let scene = el.sceneEl;
     let camera = document.querySelector("#camera");
     let isGrabbed = false;
+
+    if (scene.is("vr-mode")) {
+      return;
+    }
 
     function updatePosition(event) {
       if (isGrabbed) {
@@ -168,48 +214,6 @@ AFRAME.registerComponent("click-grab", {
         setTimeout(() => {
           launcher.removeAttribute("static-body");
         }, 100);
-      }
-    });
-  },
-});
-
-AFRAME.registerComponent("VR-grab", {
-  init: function () {
-    let el = this.el;
-    let scene = el.sceneEl;
-    let isGrabbed = false;
-
-    // function updatePosition() {
-    //   let controller = document.querySelector("#rightController");
-    //   console.log(el.object3D.position);
-    //   el.removeAttribute("position");
-    //   el.setAttribute("position", "0 0 -1");
-    //   controller.appendChild(el);
-    // }
-
-    let launcher = document.querySelector("#launcher");
-    const clickSound = document.querySelector("#clickSound");
-    const releaseSound = document.querySelector("#releaseSound");
-
-    el.addEventListener("triggerup", function () {
-      isGrabbed = true;
-      releaseSound.components.sound.playSound();
-      launcher.setAttribute("static-body", "");
-      el.setAttribute("dynamic-body", "mass: 0");
-      // updatePosition();
-      let controller = document.querySelector("#rightController");
-      console.log(el.object3D.position);
-      el.removeAttribute("position");
-      el.setAttribute("position", "0 0 -1");
-      controller.appendChild(el);
-    });
-
-    scene.addEventListener("triggerdown", function (event) {
-      if (isGrabbed) {
-        // releaseSound.components.sound.playSound();
-        isGrabbed = false;
-        launcher.removeAttribute("static-body");
-        el.setAttribute("dynamic-body", "mass: 1");
       }
     });
   },
