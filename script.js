@@ -128,7 +128,9 @@ AFRAME.registerComponent("VR-grab", {
 
     function updatePosition() {
       let controller = document.querySelector("#rightController");
-      controller.setAttribute("position", "0 0 -1");
+      console.log(el.object3D.position);
+      el.removeAttribute("position");
+      el.setAttribute("position", "0 0 -1");
       controller.appendChild(el);
     }
 
@@ -141,7 +143,12 @@ AFRAME.registerComponent("VR-grab", {
       releaseSound.components.sound.playSound();
       launcher.setAttribute("static-body", "");
       el.setAttribute("dynamic-body", "mass: 0");
-      updatePosition();
+      // updatePosition();
+      let controller = document.querySelector("#rightController");
+      console.log(el.object3D.position);
+      el.removeAttribute("position");
+      el.setAttribute("position", "0 0 -1");
+      controller.appendChild(el);
     });
 
     scene.addEventListener("triggerup", function (event) {
