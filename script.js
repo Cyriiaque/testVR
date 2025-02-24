@@ -138,16 +138,10 @@ AFRAME.registerComponent("VR-grab", {
 
     el.addEventListener("triggerdown", function () {
       isGrabbed = true;
-      clickSound.components.sound.playSound();
+      releaseSound.components.sound.playSound();
       launcher.setAttribute("static-body", "");
       el.setAttribute("dynamic-body", "mass: 0");
-      function loop() {
-        if (isGrabbed) {
-          updatePosition();
-          requestAnimationFrame(loop);
-        }
-      }
-      loop();
+      updatePosition();
     });
 
     scene.addEventListener("triggerup", function (event) {
