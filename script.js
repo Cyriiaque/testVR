@@ -64,38 +64,16 @@ AFRAME.registerComponent("VR-grab", {
     let scene = el.sceneEl;
     let isGrabbed = false;
 
-    // function updatePosition() {
-    //   let controller = document.querySelector("#rightController");
-    //   console.log(el.object3D.position);
-    //   el.removeAttribute("position");
-    //   el.setAttribute("position", "0 0 -1");
-    //   controller.appendChild(el);
-    // }
-
     let launcher = document.querySelector("#launcher");
     const clickSound = document.querySelector("#clickSound");
     const releaseSound = document.querySelector("#releaseSound");
 
     el.addEventListener("triggerdown", function () {
-      isGrabbed = true;
-      releaseSound.components.sound.playSound();
-      launcher.setAttribute("static-body", "");
-      el.setAttribute("dynamic-body", "mass: 0");
-      // updatePosition();
-      let controller = document.querySelector("#rightController");
-      console.log(el.object3D.position);
-      el.removeAttribute("position");
-      el.setAttribute("position", "0 0 -1");
-      controller.appendChild(el);
+      el.setAttribute("rotation", "0 0 0");
     });
 
     scene.addEventListener("triggerup", function () {
-      if (isGrabbed) {
-        releaseSound.components.sound.playSound();
-        isGrabbed = false;
-        launcher.removeAttribute("static-body");
-        el.setAttribute("dynamic-body", "mass: 1");
-      }
+      el.setAttribute("rotation", "0 0 90");
     });
   },
 });
@@ -160,59 +138,6 @@ AFRAME.registerComponent("click-grab", {
     });
   },
 });
-
-// AFRAME.registerComponent("VR-grab", {
-//   init: function () {
-//     let el = this.el;
-//     let isGrabbed = false;
-//     let controller = null;
-
-//     this.onGrabStart = function (evt) {
-//       let raycaster = evt.target.components.raycaster;
-//       if (!raycaster) return;
-//       let intersectedEls = raycaster.intersectedEls;
-//       if (intersectedEls.length === 0 || intersectedEls[0] !== el) return; // Ne saisir que l'objet le plus proche
-
-//       isGrabbed = true;
-//       controller = evt.target;
-//       grabSound.play();
-//       el.setAttribute("dynamic-body", "mass: 0");
-//       el.setAttribute("grab", "");
-//       controller.addEventListener("triggerup", this.onGrabEnd);
-//     };
-
-//     this.onGrabEnd = function () {
-//       if (isGrabbed) {
-//         el.setAttribute(
-//           "dynamic-body",
-//           "mass: 1; restitution: 0.6; friction: 0.5"
-//         );
-//         el.removeAttribute("grab");
-//         isGrabbed = false;
-//         controller.removeEventListener("triggerup", this.onGrabEnd);
-//         controller = null;
-//       }
-//     };
-
-//     this.tick = function () {
-//       if (isGrabbed && controller) {
-//         let controllerPos = new THREE.Vector3();
-//         let controllerQuat = new THREE.Quaternion();
-
-//         controller.object3D.getWorldPosition(controllerPos);
-//         controller.object3D.getWorldQuaternion(controllerQuat);
-
-//         let offset = new THREE.Vector3(0, 0, -1.5);
-//         offset.applyQuaternion(controllerQuat);
-
-//         let newPosition = controllerPos.clone().add(offset);
-//         el.object3D.position.copy(newPosition);
-//       }
-//     };
-
-//     el.sceneEl.addEventListener("triggerdown", this.onGrabStart);
-//   },
-// });
 
 // DRAWER
 
