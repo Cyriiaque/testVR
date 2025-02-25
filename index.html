@@ -119,490 +119,455 @@
             <a-sphere id="launcher" position="0 2.5 0" radius="1.7" opacity="0"></a-sphere>
             <a-entity id="leftController" oculus-touch-controls="hand: left" thumbstick-move></a-entity>
             <a-entity id="rightController" oculus-touch-controls="hand: right" hand-grabber
-                raycaster="showLine:true; objects: .collidable" cursor>
-            </a-entity>
+                raycaster="showLine:true; objects: .collidable" cursor></a-entity>
+        </a-entity>
 
 
-            <!-- NavMesh -->
-            <a-entity nav-mesh normal-material visible="false" position="0 0 0" gltf-model="#navmesh"></a-entity>
+        <!-- NavMesh -->
+        <a-entity nav-mesh normal-material visible="false" position="0 0 0" gltf-model="#navmesh"></a-entity>
 
-            <!-- SKY -->
-            <a-sky color="#ADD8E6"></a-sky>
-            <!-- light -->
-            <a-entity
-                light="intensity: 1.5; castShadow: true; shadowCameraTop: 8.97; shadowCameraRight: 13.66; shadowCameraLeft: -12.71"
-                position="-11.66809 4.066 5.08364">
-            </a-entity>
+        <!-- SKY -->
+        <a-sky color="#ADD8E6"></a-sky>
+        <!-- light -->
+        <a-entity
+            light="intensity: 1.5; castShadow: true; shadowCameraTop: 8.97; shadowCameraRight: 13.66; shadowCameraLeft: -12.71"
+            position="-11.66809 4.066 5.08364">
+        </a-entity>
 
-            <!-- GROUND -->
-            <!-- a-box (plutot que a-plane) évite que les objets "flottent" un peu au dessus du sol -->
-            <a-box src="#ground" position="-0.02" scale="14 20 0.04" repeat="7 7 0" rotation="-90 0 0"
-                shadow="receive: true" material="roughness: 1" static-body></a-box>
-            <a-plane src="#grass" position="-20 -.25 0" scale="50 80 1" repeat="15 15 2" rotation="-90 0 0"
-                shadow="receive: true" material="roughness: 1"></a-plane>
-            <!-- material="shader:flat" -->
+        <!-- GROUND -->
+        <!-- a-box (plutot que a-plane) évite que les objets "flottent" un peu au dessus du sol -->
+        <a-box src="#ground" position="-0.02" scale="14 20 0.04" repeat="7 7 0" rotation="-90 0 0"
+            shadow="receive: true" material="roughness: 1" static-body></a-box>
+        <a-plane src="#grass" position="-20 -.25 0" scale="50 80 1" repeat="15 15 2" rotation="-90 0 0"
+            shadow="receive: true" material="roughness: 1"></a-plane>
+        <!-- material="shader:flat" -->
 
-            <!-- CEILING -->
-            <a-box src="#ceiling" shadow="cast: true; receive: true" position="1.15 4.5 0" scale="17.2 19 0.1"
-                repeat="1.5 1.5 1" rotation="-90 0 0" color="#DDDDDD" material="shader: flat" static-body></a-box>
-            <!-- lights -->
-            <!-- right back -->
-            <a-box position="1.70 4.4 3.5" material="shader: flat" shadow="cast: true; receive: true"
-                scale="0.5 0.05 2.8" rotation="0 0 0" color="#fff"></a-box>
-            <a-box position="2.30 4.4 3.5" material="shader: flat" shadow="cast: true; receive: true"
-                scale="0.5 0.05 2.8" rotation="0 0 0" color="#fff"></a-box>
-            <a-light type="point" color="#FFF" position="0 4.35 0" scale="1 1 2"
-                light="intensity: 0.35; castShadow: true; shadowRadius: 30"></a-light>
-            <!-- right front -->
-            <a-box position="1.70 4.4 -3.5" material="shader: flat" shadow="cast: true; receive: true"
-                scale="0.5 0.05 2.8" rotation="0 0 0" color="#fff"></a-box>
-            <a-box position="2.30 4.4 -3.5" material="shader: flat" shadow="cast: true; receive: true"
-                scale="0.5 0.05 2.8" rotation="0 0 0" color="#fff"></a-box>
-            <!-- left back -->
-            <a-box position="-1.70 4.4 3.5" material="shader: flat" shadow="cast: true; receive: true"
-                scale="0.5 0.05 2.8" rotation="0 0 0" color="#fff"></a-box>
-            <a-box position="-2.30 4.4 3.5" material="shader: flat" shadow="cast: true; receive: true"
-                scale="0.5 0.05 2.8" rotation="0 0 0" color="#fff"></a-box>
-            <!-- left front -->
-            <a-box position="-1.70 4.4 -3.5" material="shader: flat" shadow="cast: true; receive: true"
-                scale="0.5 0.05 2.8" rotation="0 0 0" color="#fff"></a-box>
-            <a-box position="-2.30 4.4 -3.5" material="shader: flat" shadow="cast: true; receive: true"
-                scale="0.5 0.05 2.8" rotation="0 0 0" color="#fff"></a-box>
-
-
+        <!-- CEILING -->
+        <a-box src="#ceiling" shadow="cast: true; receive: true" position="1.15 4.5 0" scale="17.2 19 0.1"
+            repeat="1.5 1.5 1" rotation="-90 0 0" color="#DDDDDD" material="shader: flat" static-body></a-box>
+        <!-- lights -->
+        <!-- right back -->
+        <a-box position="1.70 4.4 3.5" material="shader: flat" shadow="cast: true; receive: true" scale="0.5 0.05 2.8"
+            rotation="0 0 0" color="#fff"></a-box>
+        <a-box position="2.30 4.4 3.5" material="shader: flat" shadow="cast: true; receive: true" scale="0.5 0.05 2.8"
+            rotation="0 0 0" color="#fff"></a-box>
+        <a-light type="point" color="#FFF" position="0 4.35 0" scale="1 1 2"
+            light="intensity: 0.35; castShadow: true; shadowRadius: 30"></a-light>
+        <!-- right front -->
+        <a-box position="1.70 4.4 -3.5" material="shader: flat" shadow="cast: true; receive: true" scale="0.5 0.05 2.8"
+            rotation="0 0 0" color="#fff"></a-box>
+        <a-box position="2.30 4.4 -3.5" material="shader: flat" shadow="cast: true; receive: true" scale="0.5 0.05 2.8"
+            rotation="0 0 0" color="#fff"></a-box>
+        <!-- left back -->
+        <a-box position="-1.70 4.4 3.5" material="shader: flat" shadow="cast: true; receive: true" scale="0.5 0.05 2.8"
+            rotation="0 0 0" color="#fff"></a-box>
+        <a-box position="-2.30 4.4 3.5" material="shader: flat" shadow="cast: true; receive: true" scale="0.5 0.05 2.8"
+            rotation="0 0 0" color="#fff"></a-box>
+        <!-- left front -->
+        <a-box position="-1.70 4.4 -3.5" material="shader: flat" shadow="cast: true; receive: true" scale="0.5 0.05 2.8"
+            rotation="0 0 0" color="#fff"></a-box>
+        <a-box position="-2.30 4.4 -3.5" material="shader: flat" shadow="cast: true; receive: true" scale="0.5 0.05 2.8"
+            rotation="0 0 0" color="#fff"></a-box>
 
 
 
-            <!-- WALLS -->
-            <!-- Front Wall -->
-            <a-box position="0 2.5 -10" shadow="cast: true; receive: true" scale="14 5 1" rotation="0 0 0"
-                color="#d4bc96" material="roughness: 1" static-body></a-box>
-            <!-- Back Wall -->
-            <a-box position="0 2.5 10" shadow="cast: true; receive: true" scale="14 5 1" rotation="0 0 0"
-                color="#d4bc96" material="roughness: 1" static-body></a-box>
-            <!-- Right Wall -->
-            <a-box position="7 2.5 0" shadow="cast: true; receive: true" scale="20 5 1" rotation="0 90 0"
-                color="#d4bc96" material="roughness: 1" static-body></a-box>
-            <!-- Left Wall -->
-            <!-- right -->
-            <a-entity static-body>
-                <a-box position="-7 2.5 -9" shadow="cast: true; receive: true" scale="3 5 1" rotation="0 90 0"
-                    color="#d4bc96"></a-box>
-                <!-- left -->
-                <a-box position="-7 2.5 9" shadow="cast: true; receive: true" scale="3 5 1" rotation="0 90 0"
-                    color="#d4bc96"></a-box>
-                <!-- middleleft -->
-                <a-box position="-7 2.5 -3" shadow="cast: true; receive: true" scale="3 5 1" rotation="0 90 0"
-                    color="#d4bc96"></a-box>
-                <!-- middleleft -->
-                <a-box position="-7 2.5 3" shadow="cast: true; receive: true" scale="3 5 1" rotation="0 90 0"
-                    color="#d4bc96"></a-box>
-                <!-- bottom -->
-                <a-box position="-7 0.5 0" shadow="cast: true; receive: true" scale="20 1 1" rotation="0 90 0"
-                    color="#d4bc96"></a-box>
-                <!-- top -->
-                <a-box position="-7 4.3 0" shadow="cast: true; receive: true" scale="20 1.5 1" repeat="40 40 1"
-                    rotation="0 90 0" color="#d4bc96"></a-box>
-            </a-entity>
 
-            <!-- Windows -->
-            <!-- center -->
-            <a-entity static-body>
-                <a-cylinder position="-6.5 3.65 0" material="roughness: 1" radius="0.15" height="3.5" color="#885f32"
-                    rotation="90 0 0"></a-cylinder>
-                <a-box position="-6.75 2.3 -1.55" scale="2.7 0.2 0.7" rotation="0 90 90" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 1.55" material="roughness: 1" scale="2.7 0.2 0.7" rotation="0 90 90"
-                    color="#885f32"></a-box>
-                <a-box position="-6.68 1 0" scale="3.5 0.2 0.85" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 3.6 0" scale="3.2 0.2 0.7" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 0" scale="3.2 0.2 0.2" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 0" scale="3.2 0.2 0.2" rotation="0 90 90" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 0" scale="3.2 3 0.01" rotation="0 90 90" color="#effbff"
-                    opacity="0.4"></a-box>
-            </a-entity>
+
+        <!-- WALLS -->
+        <!-- Front Wall -->
+        <a-box position="0 2.5 -10" shadow="cast: true; receive: true" scale="14 5 1" rotation="0 0 0" color="#d4bc96"
+            material="roughness: 1" static-body></a-box>
+        <!-- Back Wall -->
+        <a-box position="0 2.5 10" shadow="cast: true; receive: true" scale="14 5 1" rotation="0 0 0" color="#d4bc96"
+            material="roughness: 1" static-body></a-box>
+        <!-- Right Wall -->
+        <a-box position="7 2.5 0" shadow="cast: true; receive: true" scale="20 5 1" rotation="0 90 0" color="#d4bc96"
+            material="roughness: 1" static-body></a-box>
+        <!-- Left Wall -->
+        <!-- right -->
+        <a-entity static-body>
+            <a-box position="-7 2.5 -9" shadow="cast: true; receive: true" scale="3 5 1" rotation="0 90 0"
+                color="#d4bc96"></a-box>
             <!-- left -->
-            <a-entity static-body>
-                <a-cylinder position="-6.5 3.65 6" material="roughness: 1" radius="0.15" height="3.5" color="#885f32"
-                    rotation="90 0 0"></a-cylinder>
-                <a-box position="-6.75 2.3 4.45" scale="2.7 0.2 0.7" rotation="0 90 90" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 7.55" material="roughness: 1" scale="2.7 0.2 0.7" rotation="0 90 90"
-                    color="#885f32"></a-box>
-                <a-box position="-6.68 1 6" scale="3.5 0.2 0.85" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 3.6 6" scale="3.2 0.2 0.7" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 6" scale="3.2 0.2 0.2" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 6" scale="3.2 0.2 0.2" rotation="0 90 90" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 6" scale="3.2 3 0.01" rotation="0 90 90" color="#effbff"
-                    opacity="0.4"></a-box>
-            </a-entity>
-            <!-- right -->
-            <a-entity static-body>
-                <a-cylinder position="-6.5 3.65 -6" material="roughness: 1" radius="0.15" height="3.5" color="#885f32"
-                    rotation="90 0 0"></a-cylinder>
-                <a-box position="-6.75 2.3 -7.55" scale="2.7 0.2 0.7" rotation="0 90 90" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 -4.45" material="roughness: 1" scale="2.7 0.2 0.7" repeat="40 40 1"
-                    rotation="0 90 90" color="#885f32"></a-box>
-                <a-box position="-6.68 1 -6" scale="3.5 0.2 0.85" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 3.6 -6" scale="3.2 0.2 0.7" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 -6" scale="3.2 0.2 0.2" rotation="0 90 0" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 -6" scale="3.2 0.2 0.2" rotation="0 90 90" color="#885f32"></a-box>
-                <a-box position="-6.75 2.3 -6" scale="3.2 3 0.01" rotation="0 90 90" color="#effbff"
-                    opacity="0.4"></a-box>
-            </a-entity>
+            <a-box position="-7 2.5 9" shadow="cast: true; receive: true" scale="3 5 1" rotation="0 90 0"
+                color="#d4bc96"></a-box>
+            <!-- middleleft -->
+            <a-box position="-7 2.5 -3" shadow="cast: true; receive: true" scale="3 5 1" rotation="0 90 0"
+                color="#d4bc96"></a-box>
+            <!-- middleleft -->
+            <a-box position="-7 2.5 3" shadow="cast: true; receive: true" scale="3 5 1" rotation="0 90 0"
+                color="#d4bc96"></a-box>
+            <!-- bottom -->
+            <a-box position="-7 0.5 0" shadow="cast: true; receive: true" scale="20 1 1" rotation="0 90 0"
+                color="#d4bc96"></a-box>
+            <!-- top -->
+            <a-box position="-7 4.3 0" shadow="cast: true; receive: true" scale="20 1.5 1" repeat="40 40 1"
+                rotation="0 90 0" color="#d4bc96"></a-box>
+        </a-entity>
 
-            <!-- Top Wall line -->
-            <a-box position="0 4.34 -9.4" scale="13 0.2 0.2" rotation="-90 0 0" color="#885f32"
-                material="roughness: 1"></a-box>
-            <a-box position="0 4.34 9.4" scale="13 0.2 0.2" rotation="-90 0 0" color="#885f32"
-                material="roughness: 1"></a-box>
-            <a-box position="6.4 4.34 0" scale="19 0.2 0.2" rotation="0 90 0" color="#885f32"
-                material="roughness: 1"></a-box>
-            <a-box position="-6.4 4.34 0" scale="19 0.2 0.2" rotation="0 90 0" color="#885f32"
-                material="roughness: 1"></a-box>
+        <!-- Windows -->
+        <!-- center -->
+        <a-entity static-body>
+            <a-cylinder position="-6.5 3.65 0" material="roughness: 1" radius="0.15" height="3.5" color="#885f32"
+                rotation="90 0 0"></a-cylinder>
+            <a-box position="-6.75 2.3 -1.55" scale="2.7 0.2 0.7" rotation="0 90 90" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 1.55" material="roughness: 1" scale="2.7 0.2 0.7" rotation="0 90 90"
+                color="#885f32"></a-box>
+            <a-box position="-6.68 1 0" scale="3.5 0.2 0.85" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 3.6 0" scale="3.2 0.2 0.7" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 0" scale="3.2 0.2 0.2" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 0" scale="3.2 0.2 0.2" rotation="0 90 90" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 0" scale="3.2 3 0.01" rotation="0 90 90" color="#effbff" opacity="0.4"></a-box>
+        </a-entity>
+        <!-- left -->
+        <a-entity static-body>
+            <a-cylinder position="-6.5 3.65 6" material="roughness: 1" radius="0.15" height="3.5" color="#885f32"
+                rotation="90 0 0"></a-cylinder>
+            <a-box position="-6.75 2.3 4.45" scale="2.7 0.2 0.7" rotation="0 90 90" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 7.55" material="roughness: 1" scale="2.7 0.2 0.7" rotation="0 90 90"
+                color="#885f32"></a-box>
+            <a-box position="-6.68 1 6" scale="3.5 0.2 0.85" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 3.6 6" scale="3.2 0.2 0.7" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 6" scale="3.2 0.2 0.2" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 6" scale="3.2 0.2 0.2" rotation="0 90 90" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 6" scale="3.2 3 0.01" rotation="0 90 90" color="#effbff" opacity="0.4"></a-box>
+        </a-entity>
+        <!-- right -->
+        <a-entity static-body>
+            <a-cylinder position="-6.5 3.65 -6" material="roughness: 1" radius="0.15" height="3.5" color="#885f32"
+                rotation="90 0 0"></a-cylinder>
+            <a-box position="-6.75 2.3 -7.55" scale="2.7 0.2 0.7" rotation="0 90 90" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 -4.45" material="roughness: 1" scale="2.7 0.2 0.7" repeat="40 40 1"
+                rotation="0 90 90" color="#885f32"></a-box>
+            <a-box position="-6.68 1 -6" scale="3.5 0.2 0.85" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 3.6 -6" scale="3.2 0.2 0.7" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 -6" scale="3.2 0.2 0.2" rotation="0 90 0" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 -6" scale="3.2 0.2 0.2" rotation="0 90 90" color="#885f32"></a-box>
+            <a-box position="-6.75 2.3 -6" scale="3.2 3 0.01" rotation="0 90 90" color="#effbff" opacity="0.4"></a-box>
+        </a-entity>
+
+        <!-- Top Wall line -->
+        <a-box position="0 4.34 -9.4" scale="13 0.2 0.2" rotation="-90 0 0" color="#885f32"
+            material="roughness: 1"></a-box>
+        <a-box position="0 4.34 9.4" scale="13 0.2 0.2" rotation="-90 0 0" color="#885f32"
+            material="roughness: 1"></a-box>
+        <a-box position="6.4 4.34 0" scale="19 0.2 0.2" rotation="0 90 0" color="#885f32"
+            material="roughness: 1"></a-box>
+        <a-box position="-6.4 4.34 0" scale="19 0.2 0.2" rotation="0 90 0" color="#885f32"
+            material="roughness: 1"></a-box>
 
 
-            <!-- Tables -->
+        <!-- Tables -->
 
-            <a-entity position="2.5 0 -1" shadow="cast: true; receive: true" id="table">
-                <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
-                <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B"
-                    id="table-top"></a-box>
-                <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-            </a-entity>
+        <a-entity position="2.5 0 -1" shadow="cast: true; receive: true" id="table">
+            <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+        </a-entity>
 
-            <a-entity position="-2.5 0 -1" shadow="cast: true; receive: true" id="table">
-                <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
-                <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B"
-                    id="table-top"></a-box>
-                <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-            </a-entity>
+        <a-entity position="-2.5 0 -1" shadow="cast: true; receive: true" id="table">
+            <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+        </a-entity>
 
-            <a-entity position="2.5 0 3" shadow="cast: true; receive: true" id="table">
-                <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
-                <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B"
-                    id="table-top"></a-box>
-                <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-            </a-entity>
+        <a-entity position="2.5 0 3" shadow="cast: true; receive: true" id="table">
+            <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+        </a-entity>
 
-            <a-entity position="-2.5 0 3" shadow="cast: true; receive: true" id="table">
-                <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
-                <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B"
-                    id="table-top"></a-box>
-                <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-            </a-entity>
+        <a-entity position="-2.5 0 3" shadow="cast: true; receive: true" id="table">
+            <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+        </a-entity>
 
-            <a-entity position="2.5 0 7" shadow="cast: true; receive: true" id="table">
-                <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
-                <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B"
-                    id="table-top"></a-box>
-                <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-            </a-entity>
+        <a-entity position="2.5 0 7" shadow="cast: true; receive: true" id="table">
+            <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+        </a-entity>
 
-            <a-entity position="-2.5 0 7" shadow="cast: true; receive: true" id="table">
-                <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
-                <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B"
-                    id="table-top"></a-box>
-                <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-                <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A"
-                    id="table-bot"></a-box>
-            </a-entity>
+        <a-entity position="-2.5 0 7" shadow="cast: true; receive: true" id="table">
+            <a-box static-body position="0 1.3 -2" scale="3 0.1 1.8" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="0 1.18361 -2" scale="2.68 0.14 1.53" color="#8B5A2B" id="table-top"></a-box>
+            <a-box static-body position="-1.33 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -1.26" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="-1.33 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+            <a-box static-body position="1.335 0.64 -2.75" scale="0.1 1.23 0.1" color="#5D3A1A" id="table-bot"></a-box>
+        </a-entity>
 
-            <!-- Desk -->
-            <a-entity position="-2.6 0 -4.35" shadow="cast: true; receive: true" scale="1.1 1.3 1">
-                <a-box static-body position="0 1.3 -2" scale="3 0.15 1.8" color="#8B5A2B"></a-box>
-                <a-box static-body position="0 1.18 -2.75" scale="2.65 0.14 0.1" color="#8B5A2B"></a-box>
-                <a-box static-body position="-1.33 0.64 -1.26" scale="0.15 1.23 0.15" color="#5D3A1A"></a-box>
-                <a-box static-body position="1.335 0.64 -1.26" scale="0.15 1.23 0.15" color="#5D3A1A"></a-box>
-                <a-box static-body position="-1.33 0.64 -2.75" scale="0.15 1.23 0.15" color="#5D3A1A"></a-box>
-                <a-box static-body position="1.335 0.64 -2.75" scale="0.15 1.23 0.15" color="#5D3A1A"></a-box>
-                <a-box static-body position="-1.33 0.65 -2" scale="0.05 1.2 1.53" color="#8B5A2B"></a-box>
-                <a-box static-body position="1.335 0.65 -2" scale="0.05 1.2 1.53" color="#8B5A2B"></a-box>
-                <a-box static-body position="0 0.65 -1.26" scale="2.6 1.2 0.05" color="#8B5A2B"></a-box>
-                <a-box static-body position="0 0.65 -2" scale="0.05 1.2 1.53" color="#8B5A2B"></a-box>
-                <a-box static-body position="0.67 0.07 -2" scale="1.3 0.05 1.53" color="#8B5A2B"></a-box>
-                <a-box static-body position="0.67 0.45 -2" scale="1.3 0.05 1.53" color="#8B5A2B"></a-box>
-                <a-box static-body position="0.67 0.83 -2" scale="1.3 0.05 1.53" color="#8B5A2B"></a-box>
-            </a-entity>
+        <!-- Desk -->
+        <a-entity position="-2.6 0 -4.35" shadow="cast: true; receive: true" scale="1.1 1.3 1">
+            <a-box static-body position="0 1.3 -2" scale="3 0.15 1.8" color="#8B5A2B"></a-box>
+            <a-box static-body position="0 1.18 -2.75" scale="2.65 0.14 0.1" color="#8B5A2B"></a-box>
+            <a-box static-body position="-1.33 0.64 -1.26" scale="0.15 1.23 0.15" color="#5D3A1A"></a-box>
+            <a-box static-body position="1.335 0.64 -1.26" scale="0.15 1.23 0.15" color="#5D3A1A"></a-box>
+            <a-box static-body position="-1.33 0.64 -2.75" scale="0.15 1.23 0.15" color="#5D3A1A"></a-box>
+            <a-box static-body position="1.335 0.64 -2.75" scale="0.15 1.23 0.15" color="#5D3A1A"></a-box>
+            <a-box static-body position="-1.33 0.65 -2" scale="0.05 1.2 1.53" color="#8B5A2B"></a-box>
+            <a-box static-body position="1.335 0.65 -2" scale="0.05 1.2 1.53" color="#8B5A2B"></a-box>
+            <a-box static-body position="0 0.65 -1.26" scale="2.6 1.2 0.05" color="#8B5A2B"></a-box>
+            <a-box static-body position="0 0.65 -2" scale="0.05 1.2 1.53" color="#8B5A2B"></a-box>
+            <a-box static-body position="0.67 0.07 -2" scale="1.3 0.05 1.53" color="#8B5A2B"></a-box>
+            <a-box static-body position="0.67 0.45 -2" scale="1.3 0.05 1.53" color="#8B5A2B"></a-box>
+            <a-box static-body position="0.67 0.83 -2" scale="1.3 0.05 1.53" color="#8B5A2B"></a-box>
+        </a-entity>
 
-            <!-- Drawer -->
-            <a-entity id="drawer1" position="-2.6 0 -4.35" shadow="cast: true; receive: true" scale="1.1 1.3 1">
-                <a-box static-body position="0.08 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
-                <a-box static-body position="1.2 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.26 -1.35" scale="1.14 0.32 0.05" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.26 -2.8" scale="1.235 0.35 0.05" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.1 -2.08" scale="1.14 0.01 1.5" color="#5D3A1A"></a-box>
-                <a-sphere static-body position="0.64 0.26 -2.9" radius="0.08" color="#8B5A2B"></a-sphere>
-                <a-entity id="car-" gltf-model="#car" position="0.7 0.26 -2.5" scale="0.5 0.5 0.5" rotation="0 45 0"
-                    class="collidable">
-                </a-entity>
-            </a-entity>
-
-            <a-entity id="drawer2" position="-2.6 0.5 -4.35" shadow="cast: true; receive: true" scale="1.1 1.3 1">
-                <a-box static-body position="0.08 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
-                <a-box static-body position="1.2 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.26 -1.35" scale="1.14 0.32 0.05" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.26 -2.8" scale="1.235 0.35 0.05" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.1 -2.08" scale="1.14 0.01 1.5" color="#5D3A1A"></a-box>
-                <a-sphere static-body position="0.64 0.26 -2.9" radius="0.08" color="#8B5A2B"></a-sphere>
-            </a-entity>
-
-            <a-entity id="drawer3" position="-2.6 1 -4.35" shadow="cast: true; receive: true" scale="1.1 1.3 1">
-                <a-box static-body position="0.08 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
-                <a-box static-body position="1.2 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.26 -1.35" scale="1.14 0.32 0.05" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.26 -2.8" scale="1.235 0.35 0.05" color="#5D3A1A"></a-box>
-                <a-box static-body position="0.64 0.1 -2.08" scale="1.14 0.01 1.5" color="#5D3A1A"></a-box>
-                <a-sphere static-body position="0.64 0.26 -2.9" radius="0.08" color="#8B5A2B"></a-sphere>
-            </a-entity>
-
-            <a-entity id="book" obj-model="obj: #notebook-obj; mtl: #notebook-materiaux" position="2.2 1.443 -3"
-                scale="0.5 0.5 0.5" rotation="0 45 0" class="collidable">
-            </a-entity>
-
-            <a-entity id="computer-" gltf-model="#computer" position="-2 1.80 -6.5" scale="0.05 0.05 0.05"
-                rotation="0 215 0" class="collidable">
-            </a-entity>
-
-            <a-entity id="paint-" gltf-model="#paint" position="6.47 1.443 -3" scale="0.1 0.1 0.1" rotation="0 90 0"
+        <!-- Drawer -->
+        <a-entity id="drawer1" position="-2.6 0 -4.35" shadow="cast: true; receive: true" scale="1.1 1.3 1">
+            <a-box static-body position="0.08 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
+            <a-box static-body position="1.2 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.26 -1.35" scale="1.14 0.32 0.05" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.26 -2.8" scale="1.235 0.35 0.05" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.1 -2.08" scale="1.14 0.01 1.5" color="#5D3A1A"></a-box>
+            <a-sphere static-body position="0.64 0.26 -2.9" radius="0.08" color="#8B5A2B"></a-sphere>
+            <a-entity id="car-" gltf-model="#car" position="0.7 0.26 -2.5" scale="0.5 0.5 0.5" rotation="0 45 0"
                 class="collidable">
             </a-entity>
+        </a-entity>
 
-            <a-entity id="Market" gltf-model="#Market" position="5.25 0 8.25" scale="3 4 2" rotation="0 -45 0"
-                class="collidable">
-            </a-entity>
-            <a-entity id="shelf" gltf-model="#shelf" position="2 2.5 9" scale="1 1 1.25" rotation="0 90 0"
-                class="collidable">
-            </a-entity>
-            <a-entity id="shelf" gltf-model="#shelf" position="2 1 9" scale="1 1 1.25" rotation="0 90 0"
-                class="collidable">
-            </a-entity>
-            <a-box position="2 1.35 9.75" class="collidable" color="#8B5A2B" scale="3 0.2 2"
-                shadow="cast: true; receive: true" static-body></a-box>
-            <a-box position="2 2.75 9.75" class="collidable" color="#8B5A2B" scale="3 0.2 2"
-                shadow="cast: true; receive: true" static-body></a-box>
+        <a-entity id="drawer2" position="-2.6 0.5 -4.35" shadow="cast: true; receive: true" scale="1.1 1.3 1">
+            <a-box static-body position="0.08 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
+            <a-box static-body position="1.2 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.26 -1.35" scale="1.14 0.32 0.05" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.26 -2.8" scale="1.235 0.35 0.05" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.1 -2.08" scale="1.14 0.01 1.5" color="#5D3A1A"></a-box>
+            <a-sphere static-body position="0.64 0.26 -2.9" radius="0.08" color="#8B5A2B"></a-sphere>
+        </a-entity>
 
-            <a-text id="money" value="10" position="0 2 9.5" scale="1.25 1.25 1.25" rotation="0 180 0"
-                color="#00ff00"></a-text>
-            <a-text id="dollar" value="$" position="-.5 2 9.5" scale="1.25 1.25 1.25" rotation="0 180 0"
-                color="#00ff00"></a-text>
+        <a-entity id="drawer3" position="-2.6 1 -4.35" shadow="cast: true; receive: true" scale="1.1 1.3 1">
+            <a-box static-body position="0.08 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
+            <a-box static-body position="1.2 0.26 -2.08" scale="0.05 0.32 1.5" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.26 -1.35" scale="1.14 0.32 0.05" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.26 -2.8" scale="1.235 0.35 0.05" color="#5D3A1A"></a-box>
+            <a-box static-body position="0.64 0.1 -2.08" scale="1.14 0.01 1.5" color="#5D3A1A"></a-box>
+            <a-sphere static-body position="0.64 0.26 -2.9" radius="0.08" color="#8B5A2B"></a-sphere>
+        </a-entity>
 
-            <!-- OBJECTS -->
-            <!-- Tree -->
-            <a-entity gltf-model="#treedead" position="-30 0 15" scale="4 4 4" rotation="0 230 0"
-                shadow="cast: true; receive: true" static-body></a-entity>
-            <a-entity gltf-model="#tree" position="-20 1.5 8" scale="4 4 4" rotation="0 230 0"
-                shadow="cast: true; receive: true" static-body></a-entity>
+        <a-entity id="book" obj-model="obj: #notebook-obj; mtl: #notebook-materiaux" position="2.2 1.443 -3"
+            scale="0.5 0.5 0.5" rotation="0 45 0" class="collidable">
+        </a-entity>
 
-            <!-- Playground -->
-            <a-entity gltf-model="#slide" position="-10 0 7" scale="1 1 1" rotation="0 180 0"></a-entity>
-            <a-entity gltf-model="#swing" position="-10 0 -7" scale=".03 .03 .03" rotation="0 180 0"></a-entity>
-            <!-- OBJECTS -->
-            <!-- Tree -->
-            <a-entity id="deskchairobject" gltf-model="#deskchair" position="-3.5 0 -7" scale="4 4 4" rotation="0 230 0"
-                shadow="cast: true; receive: true" dynamic-body sound="src: #suii; on: click">
-            </a-entity>
-            <a-entity sound="src: #fallguys; autoplay: true; positional: false; loop: true; volume: 0.2"></a-entity>
-            <!-- Door -->
-            <a-entity obj-model="obj: #door-o; mtl: #door-m" position="6.35 0 -7" scale="3.5 3.5 3.5"
-                rotation="0 90 0"></a-entity>
-            <!-- Fence -->
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-15 0 -20" scale="1.5 1.5 1.5"
-                rotation="0 0 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-23.5 0 -20" scale="1.5 1.5 1.5"
-                rotation="0 0 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-32 0 -20" scale="1.5 1.5 1.5"
-                rotation="0 0 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-40.5 0 -20" scale="1.5 1.5 1.5"
-                rotation="0 0 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 -15.85" scale="1.5 1.5 1.5"
-                rotation="0 90 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 -7.4" scale="1.5 1.5 1.5"
-                rotation="0 90 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 1" scale="1.5 1.5 1.5"
-                rotation="0 90 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 9.5" scale="1.5 1.5 1.5"
-                rotation="0 90 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 18" scale="1.5 1.5 1.5"
-                rotation="0 90 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 26.5" scale="1.5 1.5 1.5"
-                rotation="0 90 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 35" scale="1.5 1.5 1.5"
-                rotation="0 90 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-40.5 0 39.5" scale="1.5 1.5 1.5"
-                rotation="0 0 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-32 0 39.5" scale="1.5 1.5 1.5"
-                rotation="0 0 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-23.5 0 39.5" scale="1.5 1.5 1.5"
-                rotation="0 0 0"></a-entity>
-            <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-15 0 39.5" scale="1.5 1.5 1.5"
-                rotation="0 0 0"></a-entity>
+        <a-entity id="computer-" gltf-model="#computer" position="-2 1.80 -6.5" scale="0.05 0.05 0.05"
+            rotation="0 215 0" class="collidable">
+        </a-entity>
 
+        <a-entity id="paint-" gltf-model="#paint" position="6.47 1.443 -3" scale="0.1 0.1 0.1" rotation="0 90 0"
+            class="collidable">
+        </a-entity>
 
-            <!-- Basket -->
-            <a-entity obj-model="obj: #Court-o; mtl: #Court-m" position="-20 -.3 -7" scale="0.8 0.8 0.8"></a-entity>
-            <a-entity obj-model="obj: #stand-o; mtl: #stand-m" position="-26.5 .5 -7" scale="4 4 4"
-                rotation="0 -90 0"></a-entity>
-            <a-entity gltf-model="#ball" position="-20 2 -14" scale="0.4 0.4 0.4"></a-entity>
+        <a-entity id="Market" gltf-model="#Market" position="5.25 0 8.25" scale="3 4 2" rotation="0 -45 0"
+            class="collidable">
+        </a-entity>
+        <a-entity id="shelf" gltf-model="#shelf" position="2 2.5 9" scale="1 1 1.25" rotation="0 90 0"
+            class="collidable">
+        </a-entity>
+        <a-entity id="shelf" gltf-model="#shelf" position="2 1 9" scale="1 1 1.25" rotation="0 90 0" class="collidable">
+        </a-entity>
+        <a-box position="2 1.35 9.75" class="collidable" color="#8B5A2B" scale="3 0.2 2"
+            shadow="cast: true; receive: true" static-body></a-box>
+        <a-box position="2 2.75 9.75" class="collidable" color="#8B5A2B" scale="3 0.2 2"
+            shadow="cast: true; receive: true" static-body></a-box>
 
+        <a-text id="money" value="10" position="0 2 9.5" scale="1.25 1.25 1.25" rotation="0 180 0"
+            color="#00ff00"></a-text>
+        <a-text id="dollar" value="$" position="-.5 2 9.5" scale="1.25 1.25 1.25" rotation="0 180 0"
+            color="#00ff00"></a-text>
 
-            <!-- Bookshelf -->
-            <a-entity gltf-model="#bookshelf" position="5.95 0.7 0" scale="3.5 3.5 3.5" rotation="0 90 0"
-                shadow="cast: true; receive: true" static-body>
-            </a-entity>
-            <!-- Plant -->
-            <a-entity gltf-model="#plant" position="5.95 2.15 -0.5" scale="0.2 0.2 0.2" rotation="0 0 0"
-                shadow="cast: true; receive: true" dynamic-body click-grab>
-            </a-entity>
-            <!-- Door -->
-            <a-entity gltf-model="#door" position="6.35 0 -7" scale="3.5 3.5 3.5" rotation="0 90 0"
-                shadow="receive: true">
-            </a-entity>
+        <!-- OBJECTS -->
+        <!-- Tree -->
+        <a-entity gltf-model="#treedead" position="-30 0 15" scale="4 4 4" rotation="0 230 0"
+            shadow="cast: true; receive: true" static-body></a-entity>
+        <a-entity gltf-model="#tree" position="-20 1.5 8" scale="4 4 4" rotation="0 230 0"
+            shadow="cast: true; receive: true" static-body></a-entity>
 
-            <!-- Board -->
-            <a-box position="0 2.7 -9.49" scale="6 2.5 0.01" color="#093e2e"></a-box>
-            <a-box position="-3 2.7 -9.455" scale="0.1 2.5 0.05" color="#885f32"></a-box>
-            <a-box position="3 2.7 -9.455" scale="0.1 2.5 0.05" color="#885f32"></a-box>
-            <a-box position="0 4 -9.455" scale="6.1 0.1 0.05" color="#885f32"></a-box>
-            <a-box position="0 1.4 -9.455" scale="6.1 0.1 0.05" color="#885f32"></a-box>
-
-            <!-- classmate -->
-            <a-entity gltf-model="#impostor" position="-1.8 0.25 -.35" scale="3 3 3" dynamic-body click-grab></a-entity>
-            <a-entity gltf-model="#player-6" position="-3.2 1.75 -.35" scale="0.2 0.2 0.2" rotation="0 180 0"
-                dynamic-body click-grab></a-entity>
-            <a-entity gltf-model="#player-9" position="-1.8 1.25 3" scale=".3 .3 .3" rotation="0 180 0" dynamic-body
-                click-grab></a-entity>
-            <a-entity gltf-model="#ninja" position="-3.2 1 3" scale=".4 .4 .4" rotation="0 180 0" dynamic-body
-                click-grab></a-entity>
-            <a-entity gltf-model="#player-7" position="-1.8 1 7.6" scale="2.25 2.25 2.25" rotation="0 0 0" dynamic-body
-                click-grab></a-entity>
-            <a-entity gltf-model="#player-8" position="-3.2 1 7.5" scale=".6 .6 .6" rotation="0 0 0" dynamic-body
-                click-grab></a-entity>
-            <a-entity gltf-model="#player-2" position="1.8 1 -.35" scale="1.5 1.5 1.5" rotation="0 -25 0" dynamic-body
-                click-grab></a-entity>
-            <a-entity gltf-model="#player-3" position="3.2 1 -.35" scale="1.25 1.25 1.25" rotation="0 180 0"
-                dynamic-body click-grab></a-entity>
-            <a-entity gltf-model="#player-1" position="3.2 1 3" scale=".8 .8 .8" rotation="0 180 0" dynamic-body
-                click-grab></a-entity>
-            <a-entity gltf-model="#player-4" position="1.8 1 7.25" scale=".6 .6 .6" rotation="0 180 0" dynamic-body
-                click-grab></a-entity>
-            <a-entity gltf-model="#player-5" position="3 1 7.25" scale=".6 .6 .6" rotation="0 180 0" dynamic-body
-                click-grab></a-entity>
+        <!-- Playground -->
+        <a-entity gltf-model="#slide" position="-10 0 7" scale="1 1 1" rotation="0 180 0"></a-entity>
+        <a-entity gltf-model="#swing" position="-10 0 -7" scale=".03 .03 .03" rotation="0 180 0"></a-entity>
+        <!-- OBJECTS -->
+        <!-- Tree -->
+        <a-entity id="deskchairobject" gltf-model="#deskchair" position="-3.5 0 -7" scale="4 4 4" rotation="0 230 0"
+            shadow="cast: true; receive: true" dynamic-body sound="src: #suii; on: click">
+        </a-entity>
+        <a-entity sound="src: #fallguys; autoplay: true; positional: false; loop: true; volume: 0.2"></a-entity>
+        <!-- Door -->
+        <a-entity obj-model="obj: #door-o; mtl: #door-m" position="6.35 0 -7" scale="3.5 3.5 3.5"
+            rotation="0 90 0"></a-entity>
+        <!-- Fence -->
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-15 0 -20" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-23.5 0 -20" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-32 0 -20" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-40.5 0 -20" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 -15.85" scale="1.5 1.5 1.5"
+            rotation="0 90 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 -7.4" scale="1.5 1.5 1.5"
+            rotation="0 90 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 1" scale="1.5 1.5 1.5"
+            rotation="0 90 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 9.5" scale="1.5 1.5 1.5"
+            rotation="0 90 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 18" scale="1.5 1.5 1.5"
+            rotation="0 90 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 26.5" scale="1.5 1.5 1.5"
+            rotation="0 90 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-44.8 0 35" scale="1.5 1.5 1.5"
+            rotation="0 90 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-40.5 0 39.5" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-32 0 39.5" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-23.5 0 39.5" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
+        <a-entity obj-model="obj: #fence-o; mtl: #fence-m" position="-15 0 39.5" scale="1.5 1.5 1.5"
+            rotation="0 0 0"></a-entity>
 
 
+        <!-- Basket -->
+        <a-entity obj-model="obj: #Court-o; mtl: #Court-m" position="-20 -.3 -7" scale="0.8 0.8 0.8"></a-entity>
+        <a-entity obj-model="obj: #stand-o; mtl: #stand-m" position="-26.5 .5 -7" scale="4 4 4"
+            rotation="0 -90 0"></a-entity>
+        <a-entity gltf-model="#ball" position="-20 2 -14" scale="0.4 0.4 0.4"></a-entity>
 
 
-            <a-entity id="clickSound" sound="src: #grab; autoplay: false ; positional: false; volume: 5"></a-entity>
-            <a-entity id="releaseSound" sound="src: #suii; autoplay: false ; positional: false; volume: 0.2"></a-entity>
-            <!-- Chairs -->
-            <a-entity gltf-model="#chair" position="-1.8 .45 -1.7" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="-3.2 0.45 -1.7" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
+        <!-- Bookshelf -->
+        <a-entity gltf-model="#bookshelf" position="5.95 0.7 0" scale="3.5 3.5 3.5" rotation="0 90 0"
+            shadow="cast: true; receive: true" static-body>
+        </a-entity>
+        <!-- Plant -->
+        <a-entity gltf-model="#plant" position="5.95 2.15 -0.5" scale="0.2 0.2 0.2" rotation="0 0 0"
+            shadow="cast: true; receive: true" dynamic-body click-grab>
+        </a-entity>
+        <!-- Door -->
+        <a-entity gltf-model="#door" position="6.35 0 -7" scale="3.5 3.5 3.5" rotation="0 90 0" shadow="receive: true">
+        </a-entity>
 
-            <a-entity id="cr-chair" gltf-model="#chair" position="-1.8 0.45 2.3" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="-3.2 0.45 2.3" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="-1.8 0.45 6" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="-3.2 0.45 6" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
+        <!-- Board -->
+        <a-box position="0 2.7 -9.49" scale="6 2.5 0.01" color="#093e2e"></a-box>
+        <a-box position="-3 2.7 -9.455" scale="0.1 2.5 0.05" color="#885f32"></a-box>
+        <a-box position="3 2.7 -9.455" scale="0.1 2.5 0.05" color="#885f32"></a-box>
+        <a-box position="0 4 -9.455" scale="6.1 0.1 0.05" color="#885f32"></a-box>
+        <a-box position="0 1.4 -9.455" scale="6.1 0.1 0.05" color="#885f32"></a-box>
 
-            <a-entity gltf-model="#chair" position="1.8 0.45 -1.7" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="3.2 0.45 -1.7" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="1.8 0.45 2.3" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="3.2 0.45 2.3" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="1.8 0.45 6.3" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
-            <a-entity gltf-model="#chair" position="3.2 0.45 6.3" scale="0.1 0.08 0.1" rotation="0 180 0"
-                shadow="receive: true" dynamic-body VR-grab click-grab>
-            </a-entity>
+        <!-- classmate -->
+        <a-entity gltf-model="#impostor" position="-1.8 0.25 -.35" scale="3 3 3" dynamic-body click-grab></a-entity>
+        <a-entity gltf-model="#player-6" position="-3.2 1.75 -.35" scale="0.2 0.2 0.2" rotation="0 180 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#player-9" position="-1.8 1.25 3" scale=".3 .3 .3" rotation="0 180 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#ninja" position="-3.2 1 3" scale=".4 .4 .4" rotation="0 180 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#player-7" position="-1.8 1 7.6" scale="2.25 2.25 2.25" rotation="0 0 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#player-8" position="-3.2 1 7.5" scale=".6 .6 .6" rotation="0 0 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#player-2" position="1.8 1 -.35" scale="1.5 1.5 1.5" rotation="0 -25 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#player-3" position="3.2 1 -.35" scale="1.25 1.25 1.25" rotation="0 180 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#player-1" position="3.2 1 3" scale=".8 .8 .8" rotation="0 180 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#player-4" position="1.8 1 7.25" scale=".6 .6 .6" rotation="0 180 0" dynamic-body
+            click-grab></a-entity>
+        <a-entity gltf-model="#player-5" position="3 1 7.25" scale=".6 .6 .6" rotation="0 180 0" dynamic-body
+            click-grab></a-entity>
 
-            <!-- fish tank -->
-            <a-entity gltf-model="#fishTank" position="-4 1.5 9" scale="1.5 1 1" rotation="0 90 0" static-body>
-                <a-entity gltf-model="#shark" position="0 1 1" scale=".1 .1 .1" rotation="0 -180 0"
-                    animation-mixer="clip: SharkArmature|SharkArmature|SharkArmature|Swim_Bite|SharkArmature|Swim_Bite; loop: repeat; timeScale: 1"
-                    animation__position="property: position; to: 0 .5 -1; dur: 5000; easing: linear; loop: true; dir: alternate"
-                    animation__rotation="property: rotation; to: 0 180 0; dur: 10000; easing: linear; loop: true; dir: alternate"></a-entity>
-                <a-entity gltf-model="#dead" position="0 1.5 0" scale=".5 .5 .5" rotation="-90 0 0"></a-entity>
-                <a-entity gltf-model="#fish" position="0 1 .8" scale=".1 .1 .1" rotation="0 180 0"
-                    animation__position="property: position; to: 0 .5 1; dur: 5000; easing: linear; loop: true; dir: alternate"
-                    animation__rotation="property: rotation; to: 0 180 0; dur: 1000; delay:5000; easing: linear; loop: true; dir: alternate"></a-entity>
-                <a-entity gltf-model="#bone" position=".4 .15 .5" scale="1 1 1" rotation="0 90 0"></a-entity>
-                <!-- <a-entity gltf-model="#puffer" id="pufferfish" position="1 -1.5 0" scale=".15 .15 .15" rotation="0 90 0" shadow="receive: true" dynamic-body></a-entity> -->
-                <a-entity gltf-model="#tentacle" position="-0.2 0 -.9" scale=".05 .05 .05" rotation="0 0 0"
-                    animation-mixer="clip:TentacleArmature|TentacleArmature|TentacleArmature|Tentacle_Idle|TentacleArmatur"></a-entity>
-            </a-entity>
-            <a-cylinder position="-4 0 9" radius="0.25" height="3" color="black"></a-cylinder>
-            <a-entity gltf-model="#puffer" id="pufferfish" position="0 1 8" scale="0.15 0.15 0.15" rotation="0 90 0"
-                dynamic-body click-grab animation-mixer="clip: Fish_Armature|Out_Of_Water; loop: repeat; timeScale: 1">
-                <a-box position="0 0 0" width="3" height="3" depth="3" opacity="0"></a-box>
-            </a-entity>
 
-            <a-entity gltf-model="#table-shop" scale=".5 .5 .5" position="5.5 1 8" rotation="0 35 0"
-                id="Table-shop"></a-entity>
-            <a-entity gltf-model="#character-shop" scale=".75 .75 .75" position="5.5 1 8" rotation="0 35 0"
-                static-body></a-entity>
-            <a-entity gltf-model="#character-shop" position="7.85 1 8.6" scale=".45 .45 .45" rotation="0 180 0"
-                id="Character-shop"></a-entity>
-            <script src="script.js"></script>
-            <script type="module" src="Selection.js"></script>
-            <script type="module" src="test.js"></script>
-            <script src="animation.js"></script>
+
+
+        <a-entity id="clickSound" sound="src: #grab; autoplay: false ; positional: false; volume: 5"></a-entity>
+        <a-entity id="releaseSound" sound="src: #suii; autoplay: false ; positional: false; volume: 0.2"></a-entity>
+        <!-- Chairs -->
+        <a-entity gltf-model="#chair" position="-1.8 .45 -1.7" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="-3.2 0.45 -1.7" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+
+        <a-entity id="cr-chair" gltf-model="#chair" position="-1.8 0.45 2.3" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="-3.2 0.45 2.3" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="-1.8 0.45 6" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="-3.2 0.45 6" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+
+        <a-entity gltf-model="#chair" position="1.8 0.45 -1.7" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="3.2 0.45 -1.7" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="1.8 0.45 2.3" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="3.2 0.45 2.3" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="1.8 0.45 6.3" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+        <a-entity gltf-model="#chair" position="3.2 0.45 6.3" scale="0.1 0.08 0.1" rotation="0 180 0"
+            shadow="receive: true" dynamic-body VR-grab click-grab>
+        </a-entity>
+
+        <!-- fish tank -->
+        <a-entity gltf-model="#fishTank" position="-4 1.5 9" scale="1.5 1 1" rotation="0 90 0" static-body>
+            <a-entity gltf-model="#shark" position="0 1 1" scale=".1 .1 .1" rotation="0 -180 0"
+                animation-mixer="clip: SharkArmature|SharkArmature|SharkArmature|Swim_Bite|SharkArmature|Swim_Bite; loop: repeat; timeScale: 1"
+                animation__position="property: position; to: 0 .5 -1; dur: 5000; easing: linear; loop: true; dir: alternate"
+                animation__rotation="property: rotation; to: 0 180 0; dur: 10000; easing: linear; loop: true; dir: alternate"></a-entity>
+            <a-entity gltf-model="#dead" position="0 1.5 0" scale=".5 .5 .5" rotation="-90 0 0"></a-entity>
+            <a-entity gltf-model="#fish" position="0 1 .8" scale=".1 .1 .1" rotation="0 180 0"
+                animation__position="property: position; to: 0 .5 1; dur: 5000; easing: linear; loop: true; dir: alternate"
+                animation__rotation="property: rotation; to: 0 180 0; dur: 1000; delay:5000; easing: linear; loop: true; dir: alternate"></a-entity>
+            <a-entity gltf-model="#bone" position=".4 .15 .5" scale="1 1 1" rotation="0 90 0"></a-entity>
+            <!-- <a-entity gltf-model="#puffer" id="pufferfish" position="1 -1.5 0" scale=".15 .15 .15" rotation="0 90 0" shadow="receive: true" dynamic-body></a-entity> -->
+            <a-entity gltf-model="#tentacle" position="-0.2 0 -.9" scale=".05 .05 .05" rotation="0 0 0"
+                animation-mixer="clip:TentacleArmature|TentacleArmature|TentacleArmature|Tentacle_Idle|TentacleArmatur"></a-entity>
+        </a-entity>
+        <a-cylinder position="-4 0 9" radius="0.25" height="3" color="black"></a-cylinder>
+        <a-entity gltf-model="#puffer" id="pufferfish" position="0 1 8" scale="0.15 0.15 0.15" rotation="0 90 0"
+            dynamic-body click-grab animation-mixer="clip: Fish_Armature|Out_Of_Water; loop: repeat; timeScale: 1">
+            <a-box position="0 0 0" width="3" height="3" depth="3" opacity="0"></a-box>
+        </a-entity>
+
+        <a-entity gltf-model="#table-shop" scale=".5 .5 .5" position="5.5 1 8" rotation="0 35 0"
+            id="Table-shop"></a-entity>
+        <a-entity gltf-model="#character-shop" scale=".75 .75 .75" position="5.5 1 8" rotation="0 35 0"
+            static-body></a-entity>
+        <a-entity gltf-model="#character-shop" position="7.85 1 8.6" scale=".45 .45 .45" rotation="0 180 0"
+            id="Character-shop"></a-entity>
+        <script src="script.js"></script>
+        <script type="module" src="Selection.js"></script>
+        <script type="module" src="test.js"></script>
+        <script src="animation.js"></script>
     </a-scene>
 </body>
 
