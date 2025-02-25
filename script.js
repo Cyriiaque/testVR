@@ -1,17 +1,27 @@
-AFRAME.registerComponent("testVR", {
+AFRAME.registerComponent("color-toggle", {
   init: function () {
     let el = this.el;
-    let scene = el.sceneEl;
-    let isGrabbed = false;
+    let originalColor = el.getAttribute("material").color || "white"; // Couleur de base
+    let isOriginalColor = true;
 
-    // Add event listener for triggerdown event
-    el.addEventListener("triggerdown", function () {
-      el.setAttribute("color", "red"); // Change color to red
-    });
+    // Fonction pour changer de couleur
+    this.toggleColor = function () {
+      let newColor = isOriginalColor ? "blue" : originalColor;
+      el.setAttribute("material", "color", newColor);
+      isOriginalColor = !isOriginalColor;
+    };
 
-    // Add event listener for triggerup event to reset color
-    el.addEventListener("triggerup", function () {
-      el.setAttribute("color", "blue"); // Change color back to blue
+    // Ajoute un écouteur sur les contrôleurs VR
+    this.el.sceneEl.addEventListener("triggerdown", (evt) => {
+      let controller = evt.target;
+      let raycaster = controller.components.raycaster;
+
+      if (raycaster) {
+        let intersectedEls = raycaster.intersectedEls;
+        if (intersectedEls.includes(el)) {
+          this.toggleColor();
+        }
+      }
     });
   },
 });
