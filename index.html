@@ -118,9 +118,7 @@
             <a-sphere id="launcher" position="0 2.5 0" radius="1.7" opacity="0"></a-sphere>
             <a-entity id="leftController" oculus-touch-controls="hand: left" thumbstick-move></a-entity>
             <a-entity id="rightController" oculus-touch-controls="hand: right" id="vrcursor"
-                raycaster="showLine:false; objects: .collidable" cursor hand-grabber>
-                <a-entity geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: #000000"
-                    position="0 0 -1.5"></a-entity>
+                raycaster="showLine:true; objects: .collidable" cursor>
             </a-entity>
         </a-entity>
 
