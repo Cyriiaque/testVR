@@ -1,14 +1,19 @@
 AFRAME.registerComponent("VR-grab", {
   init: function () {
     let el = this.el;
+    let scene = el.sceneEl;
     let isGrabbed = false;
     let controller = null;
 
+    // Détection du mode VR
+    let isVR = scene.is("vr-mode");
+
+    // Gestion du grab en VR
     this.onGrabStart = function (evt) {
       let raycaster = evt.target.components.raycaster;
       if (!raycaster) return;
       let intersectedEls = raycaster.intersectedEls;
-      if (intersectedEls.length === 0 || intersectedEls[0] !== el) return; // Ne saisir que l'objet le plus proche
+      if (intersectedEls.length === 0 || intersectedEls[0] !== el) return;
 
       isGrabbed = true;
       controller = evt.target;
@@ -18,45 +23,17 @@ AFRAME.registerComponent("VR-grab", {
 
     this.onGrabEnd = function () {
       if (isGrabbed) {
-        el.setAttribute("dynamic-body", "mass: 1");
+        el.setAttribute("dynamic-body", "mass: 1; restitution: 0.6; friction: 0.5");
         isGrabbed = false;
         controller.removeEventListener("triggerup", this.onGrabEnd);
         controller = null;
       }
     };
 
-    this.tick = function () {
-      if (isGrabbed && controller) {
-        let controllerPos = new THREE.Vector3();
-        let controllerQuat = new THREE.Quaternion();
-
-        controller.object3D.getWorldPosition(controllerPos);
-        controller.object3D.getWorldQuaternion(controllerQuat);
-
-        let offset = new THREE.Vector3(0, 0, -1.5);
-        offset.applyQuaternion(controllerQuat);
-
-        let newPosition = controllerPos.clone().add(offset);
-        el.object3D.position.copy(newPosition);
-      }
-    };
-
-    el.sceneEl.addEventListener("triggerdown", this.onGrabStart);
-  },
-});
-
-// Le code fait effet quand le jeu est en navigateur
-AFRAME.registerComponent("click-grab", {
-  // Version navigateur
-
-  init: function () {
-    let el = this.el;
-    let scene = el.sceneEl;
-    let camera = document.querySelector("#camera");
-    let isGrabbed = false;
-
+    // Gestion du grab en mode navigateur (souris)
     function updatePosition(event) {
       if (isGrabbed) {
+        let camera = document.querySelector("#camera");
         let cameraPos = new THREE.Vector3();
         let cameraQuat = new THREE.Quaternion();
 
@@ -68,7 +45,7 @@ AFRAME.registerComponent("click-grab", {
         let mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
 
         let offset = new THREE.Vector3(mouseX * 0.5, mouseY * 0.5, -2.5); // Toujours devant
-        offset.applyQuaternion(cameraQuat); // Oriente l'objet devant la caméra
+        offset.applyQuaternion(cameraQuat);
 
         let newPosition = cameraPos.clone().add(offset);
         el.object3D.position.copy(newPosition);
@@ -76,22 +53,33 @@ AFRAME.registerComponent("click-grab", {
     }
 
     el.addEventListener("mousedown", function () {
-      isGrabbed = true;
-      el.setAttribute("dynamic-body", "mass: 0"); // Désactive la gravité
-      el.setAttribute("grab", "");
-      window.addEventListener("mousemove", updatePosition);
+      if (!scene.is("vr-mode")) {
+        isGrabbed = true;
+        el.setAttribute("dynamic-body", "mass: 0");
+        window.addEventListener("mousemove", updatePosition);
+      }
     });
 
     scene.addEventListener("mouseup", function () {
       if (isGrabbed) {
-        el.setAttribute(
-          "dynamic-body",
-          "mass: 1; restitution: 0.6; friction: 0.5"
-        ); // Réactive la gravité
-        el.removeAttribute("grab");
+        el.setAttribute("dynamic-body", "mass: 1; restitution: 0.6; friction: 0.5");
         isGrabbed = false;
         window.removeEventListener("mousemove", updatePosition);
       }
+    });
+
+    // Associer les événements aux contrôleurs VR
+    scene.addEventListener("enter-vr", function () {
+      isVR = true;
+      let leftController = document.querySelector("#leftController");
+      let rightController = document.querySelector("#rightController");
+
+      if (leftController) leftController.addEventListener("triggerdown", this.onGrabStart);
+      if (rightController) rightController.addEventListener("triggerdown", this.onGrabStart);
+    });
+
+    scene.addEventListener("exit-vr", function () {
+      isVR = false;
     });
   },
 });
