@@ -68,7 +68,7 @@ AFRAME.registerComponent("VR-grab", {
     const clickSound = document.querySelector("#clickSound");
     const releaseSound = document.querySelector("#releaseSound");
 
-    el.addEventListener("triggerdown", function () {
+    el.addEventListener("click", function () {
       el.setAttribute("rotation", "0 0 0");
     });
 
