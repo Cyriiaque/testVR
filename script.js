@@ -12,7 +12,6 @@ AFRAME.registerComponent("VR-grab", {
 
       isGrabbed = true;
       controller = evt.target;
-      grabSound.play();
       el.setAttribute("dynamic-body", "mass: 0");
       controller.addEventListener('triggerup', this.onGrabEnd);
     };
