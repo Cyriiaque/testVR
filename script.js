@@ -5,7 +5,6 @@ entity.setAttribute("position", "0 1 0");
 entity.setAttribute("scale", "0.1 0.08 0.1");
 entity.setAttribute("dynamic-body", "mass: 1;");
 entity.setAttribute("click-grab", "");
-entity.setAttribute("move-objects", "");
 entity.setAttribute("VR-grab", "");
 entity.setAttribute("id", `${Date.now()}`);
 entity.setAttribute("class", "collidable");
