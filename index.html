@@ -117,9 +117,10 @@
             </a-entity>
             <a-box static-body position="0 1 0" scale="0.5 2 0.5" opacity="0"></a-box>
             <a-sphere id="launcher" position="0 2.5 0" radius="1.7" opacity="0"></a-sphere>
-            <a-entity id="leftController" oculus-touch-controls="hand: left" thumbstick-move></a-entity>
+            <a-entity id="leftController" oculus-touch-controls="hand: left" hand-grabber
+                  raycaster="showLine:true; objects: .collidable" cursor></a-entity>
             <a-entity id="rightController" oculus-touch-controls="hand: right" hand-grabber
-                raycaster="showLine:true; objects: .collidable" cursor></a-entity>
+                hand-grabber raycaster="showLine:true; objects: .collidable" cursor></a-entity>
         </a-entity>
 
 
