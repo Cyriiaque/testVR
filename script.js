@@ -14,14 +14,12 @@ AFRAME.registerComponent("VR-grab", {
       controller = evt.target;
       grabSound.play();
       el.setAttribute("dynamic-body", "mass: 0");
-      el.setAttribute("grab", "");
       controller.addEventListener('triggerup', this.onGrabEnd);
     };
 
     this.onGrabEnd = function () {
       if (isGrabbed) {
-        el.setAttribute("dynamic-body", "mass: 1; restitution: 0.6; friction: 0.5");
-        el.removeAttribute("grab");
+        el.setAttribute("dynamic-body", "mass: 1");
         isGrabbed = false;
         controller.removeEventListener('triggerup', this.onGrabEnd);
         controller = null;
