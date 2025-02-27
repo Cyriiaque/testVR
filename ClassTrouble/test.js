@@ -2,12 +2,14 @@
 // The test is composed of a series of questions with two possible answers
 // The user must select the correct answer to progress to the next question
 // If the user selects the wrong answer, a random event will occur
-
+import { getRequest } from "./api-request.js";
 
 const scene = document.querySelector("a-scene");
-const response = await fetch('./Json/question.json');
-const temp = await response.json();
-console.log(temp);
+
+
+
+
+
 
 let  storedUserInput = JSON.parse(localStorage.getItem("currentUserInput"));
 if (storedUserInput) {
@@ -17,14 +19,14 @@ if (storedUserInput) {
 }
 
 
-import { getRequest } from "./api-request.js";
-const userData = await getRequest("user?name=" + storedUserInput);
 
+const userData = await getRequest("user?name=" + storedUserInput);
+console.log("ceci est userData", userData);
 let money = document.querySelector("#money");
 money.setAttribute("value", parseInt(userData[0].money));
 
 
-let rounds = [2,4,6,8,10,12,14,16,18];
+let rounds = [2,6,10];
 let round = parseInt(userData[0].round);
 let questionIndex = 0;
 
@@ -55,37 +57,49 @@ scene.appendChild(roundText);
 ;
 
 
-
+const tempQuestion = await getRequest("question");
+const tempreponses = await getRequest("reponse");
+let temp = tempQuestion.map((question, index) => {
+    return {
+        ...question,
+        reponses: tempreponses.filter(reponse => reponse.id_question === question.id_question).map(reponse => {
+            return {
+                ...reponse,
+                est_correcte: reponse.est_correcte === "1" ? true : false
+            };
+        })
+    };
+});
 
 // Setting up correct answers and questions for each round
 let data = [];
+let usedQuestions = new Set();
 
 for (let i = 0; i < rounds.length; i++) {
     const nb = rounds[i];
     const roundQuestions = [];
     // Create a copy of the questions to sample from for this round
-    const availableQuestions = [...temp];
+    const availableQuestions = temp.filter(question => !usedQuestions.has(question.id_question));
     for (let j = 0; j < nb; j++) {
         const randomIndex = Math.floor(Math.random() * availableQuestions.length);
-        roundQuestions.push(availableQuestions.splice(randomIndex, 1)[0]);
+        const selectedQuestion = availableQuestions.splice(randomIndex, 1)[0];
+        roundQuestions.push(selectedQuestion);
+        usedQuestions.add(selectedQuestion.id_question);
     }
     data.push(roundQuestions);
 }
 
 console.log(data);
 
-let correctAnswers = [];
-data.forEach(roundArr => {
-  roundArr.forEach(q => {
-    if (q.reponses[0].est_correcte === true) {
-        correctAnswers.push(q.reponses[0].texte_reponse);
-    }
-    if (q.reponses[1].est_correcte === true) {
-        correctAnswers.push(q.reponses[1].texte_reponse);
-    }
-  });
-});
-console.log(correctAnswers);
+let correctAnswers = data.flat().reduce((acc, question) => {
+    question.reponses.forEach(reponse => {
+        if (reponse.est_correcte === true) {
+            acc.push(reponse.texte_reponse);
+        }
+    });
+    return acc;
+}, []);
+console.log("Correct Answers", correctAnswers);
 
 
 let cpt_resp = 0;
@@ -110,7 +124,7 @@ async function StartTest() {
     infoBox.setAttribute("width", "1.4");
     infoBox.setAttribute("height", "1.2");
     infoBox.setAttribute("depth", "0.01");
-    infoBox.setAttribute("material", "color: #fff; opacity: 1");
+    infoBox.setAttribute("material", "color:rgba(163, 163, 163, 0.75); opacity: 1");
 
     // Create a text element to display the start of the test
     const textElement = document.createElement("a-text");
