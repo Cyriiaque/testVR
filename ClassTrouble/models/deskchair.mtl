@@ -1,0 +1,12 @@
+# Created by Kenney (www.kenney.nl) 
+
+newmtl metalMedium
+Ka 0.800000 0.800000 0.800000 
+  Kd 0.15 0.15 0.15
+Ks 0.000000 0.000000 0.000000 
+
+newmtl carpet
+Ka 0.800000 0.800000 0.800000 
+  Kd 0.30 0.30 0.30
+Ks 0.000000 0.000000 0.000000 
+
