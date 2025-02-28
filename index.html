@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Trouble VR</title>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+    <!-- Import for the Physics -->
+    <script
+        src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.4/dist/aframe-extras.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/aframevr/user-input-textarea/dist/aframe-user-input-textarea-component.min.js"></script>
+
+
+</head>
+
+<body>
+    <a-scene physics="gravity: -9.8; restitution: 0.8" inspector-plugin-recast>
+
+        <a-entity progressive-controls></a-entity>
+
+        <a-light type="ambient" color="#FFF" intensity="1"></a-light>
+
+
+        <!-- Controller -->
+
+        <a-entity id="rig" position="0 1 0">
+            <a-camera id="camera" wasd-controls="enabled: false" look-controls="pointerLockEnabled: true;"
+                position="0 1.5 0">
+                <a-entity cursor position="0 0 -0.01" geometry="primitive: sphere; radius: 0.00005"
+                    material="color: #202020; shader: flat">
+                </a-entity>
+            </a-camera>
+            <a-entity id="rightController" laser-controls="hand:right" oculus-touch-controls="hand: right" cursor>
+            </a-entity>
+            <a-entity id="leftController" oculus-touch-controls="hand: left">
+            </a-entity>
+        </a-entity>
+
+
+
+        <!-- Interactive Input -->
+        <a-entity id="textDisplay" position="0 1.5 -2" geometry="primitive: plane; width: 1.5; height: 0.3"
+            material="color: #CCC" text="value: Cliquez ici pour entrer votre nom; align: center; color: black"
+            clickable></a-entity>
+
+        <!-- Virtual KeyBoard -->
+        <a-entity id="keyboard" position="0 0.5 -2">
+            <a-entity id="keysContainer"></a-entity>
+        </a-entity>
+
+
+        <!-- SKY -->
+        <a-sky color="#ADD8E6"></a-sky>
+        <!-- light -->
+        <a-entity
+            light="intensity: 1.5; castShadow: true; shadowCameraTop: 8.97; shadowCameraRight: 13.66; shadowCameraLeft: -12.71"
+            position="-11.66809 4.066 5.08364">
+        </a-entity>
+
+        <a-text value="Welcome to Class Trouble VR !" position="0 4 -3" align="center" color="black"
+            font="./ClassTrouble/assets/font/Gloria-msdf.json" font-image="./ClassTrouble/assets/font/Gloria-msdf.png"
+            negate="false" scale="1.75 1.75 1.75"></a-text>
+
+        <script type="module" src="loading.js"></script>
+        <script type="module" src="data.js"></script>
+    </a-scene>
+</body>
+
+</html>
