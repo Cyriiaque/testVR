@@ -112,8 +112,7 @@
             </a-entity>
             <a-box static-body position="0 1 0" scale="0.5 3 0.5" opacity="0"></a-box>
             <a-sphere id="launcher" position="0 2.5 0" radius="1.7" opacity="0"></a-sphere>
-            <a-entity id="rightController" raycaster laser-controls="hand:right" oculus-touch-controls="hand: right" cursor
-                thumbstick-move>
+            <a-entity id="rightController" raycaster="objects: .collidable" laser-controls="hand:right" oculus-touch-controls="hand: right" cursor>
             </a-entity>
             <a-entity id="leftController" oculus-touch-controls="hand: left">
             </a-entity>
